@@ -1,0 +1,15 @@
+>> Cenario de controle: Mailpit no ar
+[controle] enviados=100 concluidos(201)=100 falhas=0 gravados_no_banco=100 tempo_medio=14ms
+   e-mails na caixa do Mailpit: 100
+>> Cenario de falha: Mailpit parado
+[falha] enviados=100 concluidos(201)=0 falhas=100 gravados_no_banco=0 tempo_medio=256ms
+# Linha de base - checkout no monolitico (estado atual)
+
+Executado em 28/10/2026 23:24 com 100 pedidos por cenario.
+
+| Cenario | Enviados | Concluidos (HTTP 201) | Falhas | Gravados no banco | Tempo medio (ms) | Duracao total (ms) |
+|---|---|---|---|---|---|---|
+| controle | 100 | 100 | 0 | 100 | 14 | 2107 |
+| falha | 100 | 0 | 100 | 0 | 256 | 26289 |
+
+E-mails recebidos pelo Mailpit no cenario de controle: 100

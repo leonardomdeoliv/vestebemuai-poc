@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: monolito
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/vestebemuai}
+    username: ${DB_USER:vestebemuai}
+    password: ${DB_PASSWORD:vestebemuai}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:1025}
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
+  # O RabbitMQ ja sobe no Docker Compose da Sprint 1, mas so passa a ser usado na Sprint 2.
+
+vestebemuai:
+  email:
+    remetente: pedidos@vestebemuai.com.br
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  health:
+    mail:
+      enabled: true

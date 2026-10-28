@@ -1,0 +1,54 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:"DejaVu Sans",Arial,sans-serif}svg text{font-family:"DejaVu Sans",Arial,sans-serif}</style>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0L10,5L0,10z" fill="#b3261e"/></marker></defs>
+<text x="700" y="44" text-anchor="middle" font-size="28" font-weight="bold" fill="#1d2420">C4 nível 2 – Contêineres (estado atual)</text>
+<text x="700" y="76" text-anchor="middle" font-size="17" fill="#555">Ambiente da PoC, criado com docker compose up (Sprint 1)</text>
+<g transform="translate(0,40)">
+<!-- Cliente -->
+<g><circle cx="150" cy="300" r="40" fill="#08427b"/><rect x="40" y="338" width="220" height="110" rx="24" fill="#08427b"/>
+<text x="150" y="378" text-anchor="middle" fill="#fff" font-size="21" font-weight="bold">Cliente</text><text x="150" y="402" text-anchor="middle" fill="#fff" font-size="14">[Pessoa]</text><text x="150" y="428" text-anchor="middle" fill="#fff" font-size="14">Navegador ou app</text></g>
+<!-- Boundary -->
+<rect x="340" y="110" width="660" height="700" rx="10" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="10 6"/>
+<text x="360" y="790" font-size="17" font-weight="bold" fill="#444">Loja VesteBemUai</text><text x="360" y="770" font-size="13" fill="#666">[Sistema de software]</text>
+<!-- Monolito -->
+<rect x="400" y="150" width="540" height="300" rx="14" fill="#438dd5"/>
+<text x="670" y="190" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold">Monolítico</text><text x="670" y="214" text-anchor="middle" fill="#fff" font-size="14">[Contêiner: Java 21, Spring Boot 3 – porta 8080]</text>
+<rect x="425" y="240" width="235" height="88" rx="8" fill="#fff"/><text x="542" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="#1168bd">Pedidos / Checkout</text><text x="542" y="292" text-anchor="middle" font-size="13" fill="#333">CheckoutService</text><text x="542" y="312" text-anchor="middle" font-size="13" fill="#333">POST /pedidos</text>
+<rect x="680" y="240" width="235" height="88" rx="8" fill="#fdecea" stroke="#b3261e" stroke-width="2.5"/><text x="797" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="#b3261e">Notificações</text><text x="797" y="292" text-anchor="middle" font-size="13" fill="#333">EmailConfirmacaoService</text><text x="797" y="312" text-anchor="middle" font-size="13" fill="#b3261e">alvo da extração</text>
+<path d="M660,284 L680,284" stroke="#b3261e" stroke-width="3" marker-end="url(#r)"/>
+<rect x="425" y="345" width="150" height="40" rx="8" fill="#e8eef6" stroke-dasharray="5 4" stroke="#fff"/><text x="500" y="370" text-anchor="middle" font-size="13" fill="#555">Estoque</text>
+<rect x="595" y="345" width="150" height="40" rx="8" fill="#e8eef6"/><text x="670" y="370" text-anchor="middle" font-size="13" fill="#555">Pagamentos</text>
+<rect x="765" y="345" width="150" height="40" rx="8" fill="#e8eef6"/><text x="840" y="370" text-anchor="middle" font-size="13" fill="#555">Catálogo</text>
+<text x="670" y="420" text-anchor="middle" fill="#fff" font-size="13.5">Módulos em cinza: fora do escopo da PoC (não implementados)</text>
+<!-- DB -->
+<g transform="translate(410,560)"><path d="M0,22 a120,22 0 0 0 240,0 v120 a120,22 0 0 1 -240,0z" fill="#438dd5"/><ellipse cx="120" cy="22" rx="120" ry="22" fill="#5a9ee0"/>
+<text x="120" y="80" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">Banco de dados</text><text x="120" y="102" text-anchor="middle" fill="#fff" font-size="13">[PostgreSQL 16 – 5432]</text><text x="120" y="126" text-anchor="middle" fill="#fff" font-size="13">pedido, item_pedido</text></g>
+<!-- RabbitMQ -->
+<rect x="700" y="560" width="250" height="160" rx="14" fill="#fff" stroke="#438dd5" stroke-width="2.5" stroke-dasharray="9 6"/>
+<text x="825" y="598" text-anchor="middle" fill="#1168bd" font-size="19" font-weight="bold">Broker de mensagens</text><text x="825" y="620" text-anchor="middle" fill="#1168bd" font-size="13">[RabbitMQ 3.13 – 5672/15672]</text>
+<text x="825" y="652" text-anchor="middle" fill="#333" font-size="13.5">Já sobe no Compose,</text><text x="825" y="672" text-anchor="middle" fill="#333" font-size="13.5">ainda sem uso. Recebe o</text><text x="825" y="692" text-anchor="middle" fill="#333" font-size="13.5">evento PedidoCriado na Sprint 2</text>
+<!-- SMTP -->
+<rect x="1100" y="200" width="270" height="170" rx="14" fill="#8a8a8a"/>
+<text x="1235" y="242" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">Servidor de e-mail</text><text x="1235" y="266" text-anchor="middle" fill="#fff" font-size="13">[Sistema externo]</text><text x="1235" y="298" text-anchor="middle" fill="#fff" font-size="14">Mailpit na PoC</text><text x="1235" y="320" text-anchor="middle" fill="#fff" font-size="14">SMTP 1025 · caixa 8025</text>
+<!-- arrows -->
+<path d="M260,380 L400,330" stroke="#555" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#a)"/>
+<text x="268" y="300" font-size="14.5" fill="#333">POST /pedidos</text><text x="268" y="318" font-size="13" fill="#666">[HTTPS/JSON]</text>
+<path d="M530,450 L530,560" stroke="#555" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#a)"/>
+<text x="540" y="500" font-size="14.5" fill="#333">Lê e grava</text><text x="540" y="519" font-size="13" fill="#666">[JDBC/JPA]</text>
+<path d="M940,284 L1100,284" stroke="#b3261e" stroke-width="3.5" fill="none" marker-end="url(#r)"/>
+<text x="948" y="252" font-size="13" font-weight="bold" fill="#b3261e">Envia na mesma</text><text x="948" y="270" font-size="13" font-weight="bold" fill="#b3261e">transação</text><text x="948" y="306" font-size="12.5" fill="#b3261e">[SMTP, síncrono]</text>
+<path d="M1235,200 C1235,40 160,40 150,256" stroke="#555" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#a)"/>
+<text x="700" y="88" text-anchor="middle" font-size="14.5" fill="#333">Entrega o e-mail de confirmação</text>
+<!-- callout -->
+<rect x="1040" y="560" width="330" height="200" rx="12" fill="#fdecea" stroke="#b3261e" stroke-width="2"/>
+<text x="1058" y="592" font-size="15.5" font-weight="bold" fill="#b3261e">Acoplamento a remover</text>
+<text x="1058" y="620" font-size="13.5" fill="#1d2420">O checkout grava o pedido e espera</text>
+<text x="1058" y="640" font-size="13.5" fill="#1d2420">o SMTP responder. Falha no e-mail =</text>
+<text x="1058" y="660" font-size="13.5" fill="#1d2420">rollback do pedido (HTTP 503).</text>
+<text x="1058" y="690" font-size="13.5" fill="#1d2420">Linha de base: 0/100 pedidos com o</text>
+<text x="1058" y="710" font-size="13.5" fill="#1d2420">Mailpit parado; tempo médio sobe</text>
+<text x="1058" y="730" font-size="13.5" fill="#1d2420">de 14 ms para 256 ms por falha.</text>
+</g>
+<text x="700" y="885" text-anchor="middle" font-size="14" fill="#555">Legenda: azul = contêiner da loja · tracejado = provisionado, sem uso ainda · cinza = externo · vermelho = acoplamento síncrono</text>
+</svg>
