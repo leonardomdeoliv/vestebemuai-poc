@@ -1,0 +1,9 @@
+# Perfil para rodar o monolitico sem Docker (banco em memoria).
+spring:
+  datasource:
+    url: jdbc:h2:mem:vestebemuai
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true

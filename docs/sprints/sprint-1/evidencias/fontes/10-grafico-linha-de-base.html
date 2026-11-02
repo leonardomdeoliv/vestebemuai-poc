@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:"DejaVu Sans",Arial,sans-serif;color:#1d2420;width:1200px;padding:24px 32px;box-sizing:border-box}
+h1{font-size:24px;margin:0 0 4px}p.s{margin:0 0 18px;color:#555;font-size:15px}.g{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+h2{font-size:17px;margin:0 0 10px;font-weight:600}.n{font-size:13px;color:#666;margin-top:6px}</style>
+<h1>Linha de base do checkout (monolítico, estado atual)</h1>
+<p class="s">100 pedidos por cenário, enviados em sequência em 28/10/2026 · fonte: scripts/linha-de-base.sh</p>
+<div class="g">
+<div><h2>Pedidos concluídos (de 100)</h2>
+<svg width="540" height="300"><g font-size="13" fill="#666">
+<line x1="60" x2="530" y1="250" y2="250" stroke="#999"/><line x1="60" x2="530" y1="150" y2="150" stroke="#e5e5e5"/><line x1="60" x2="530" y1="50" y2="50" stroke="#e5e5e5"/>
+<text x="50" y="254" text-anchor="end">0</text><text x="50" y="154" text-anchor="end">50</text><text x="50" y="54" text-anchor="end">100</text></g>
+<path d="M120,250 V54 a4,4 0 0 1 4,-4 H236 a4,4 0 0 1 4,4 V250z" fill="#2a78b5"/>
+<rect x="350" y="248" width="120" height="2" fill="#2a78b5"/>
+<text x="180" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d2420">100 (100%)</text>
+<text x="410" y="236" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d2420">0 (0%)</text>
+<text x="180" y="274" text-anchor="middle" font-size="14" fill="#1d2420">Mailpit no ar</text><text x="410" y="274" text-anchor="middle" font-size="14" fill="#1d2420">Mailpit parado</text>
+</svg><div class="n">Com o e-mail fora do ar, nenhum pedido foi gravado: a falha no SMTP faz rollback (HTTP 503).</div></div>
+<div><h2>Tempo médio de resposta do checkout (ms)</h2>
+<svg width="540" height="300"><g font-size="13" fill="#666">
+<line x1="60" x2="530" y1="250" y2="250" stroke="#999"/><line x1="60" x2="530" y1="170" y2="170" stroke="#e5e5e5"/><line x1="60" x2="530" y1="90" y2="90" stroke="#e5e5e5"/>
+<text x="50" y="254" text-anchor="end">0</text><text x="50" y="174" text-anchor="end">100</text><text x="50" y="94" text-anchor="end">200</text></g>
+<path d="M120,250 V242.8 a4,4 0 0 1 4,-4 H236 a4,4 0 0 1 4,4 V250z" fill="#2a78b5"/>
+<path d="M350,250 V49.2 a4,4 0 0 1 4,-4 H466 a4,4 0 0 1 4,4 V250z" fill="#2a78b5"/>
+<text x="180" y="226" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d2420">14 ms</text>
+<text x="410" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1d2420">256 ms</text>
+<text x="180" y="274" text-anchor="middle" font-size="14" fill="#1d2420">Mailpit no ar</text><text x="410" y="274" text-anchor="middle" font-size="14" fill="#1d2420">Mailpit parado</text>
+</svg><div class="n">Mesmo para receber o erro, o cliente espera cerca de 18 vezes mais. Se o SMTP ficar lento em vez de parado, a espera pode chegar ao timeout configurado de 5 s (não medido).</div></div>
+</div>

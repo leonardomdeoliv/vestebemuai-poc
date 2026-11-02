@@ -1,0 +1,63 @@
+# Ambiente completo da PoC VesteBemUai: sobe tudo com "docker compose up -d" (RNF04).
+name: vestebemuai
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: vestebemuai
+      POSTGRES_USER: vestebemuai
+      POSTGRES_PASSWORD: vestebemuai
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vestebemuai -d vestebemuai"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Broker de mensagens. Na Sprint 1 ele so sobe; o monolito passa a publicar
+  # o evento PedidoCriado nele na Sprint 2. Painel: http://localhost:15672
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    environment:
+      RABBITMQ_DEFAULT_USER: vestebemuai
+      RABBITMQ_DEFAULT_PASS: vestebemuai
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # Servidor SMTP falso que guarda os e-mails. Caixa de entrada: http://localhost:8025
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  monolito:
+    build: ./monolito
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/vestebemuai
+      DB_USER: vestebemuai
+      DB_PASSWORD: vestebemuai
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
+volumes:
+  pgdata:

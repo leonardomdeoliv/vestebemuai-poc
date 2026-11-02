@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:"DejaVu Sans",Arial,sans-serif}svg text{font-family:"DejaVu Sans",Arial,sans-serif}</style>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0L10,5L0,10z" fill="#b3261e"/></marker></defs>
+<text x="700" y="44" text-anchor="middle" font-size="28" font-weight="bold" fill="#1d2420">C4 nível 1 – Contexto do sistema (estado atual)</text>
+<text x="700" y="76" text-anchor="middle" font-size="17" fill="#555">VesteBemUai, loja online de roupas e acessórios, antes da extração das notificações</text>
+<g transform="translate(0,40)">
+<!-- Cliente -->
+<g><circle cx="190" cy="185" r="42" fill="#08427b"/><rect x="70" y="225" width="240" height="140" rx="26" fill="#08427b"/>
+<text x="190" y="265" text-anchor="middle" fill="#fff" font-size="21" font-weight="bold">Cliente</text><text x="190" y="290" text-anchor="middle" fill="#fff" font-size="14">[Pessoa]</text>
+<text x="190" y="318" text-anchor="middle" fill="#fff" font-size="14.5">Compra roupas e</text><text x="190" y="338" text-anchor="middle" fill="#fff" font-size="14.5">acessórios na loja online</text></g>
+<!-- Gerente -->
+<g><circle cx="190" cy="485" r="42" fill="#08427b"/><rect x="70" y="525" width="240" height="140" rx="26" fill="#08427b"/>
+<text x="190" y="563" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">Gerente de</text><text x="190" y="586" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">e-commerce</text><text x="190" y="609" text-anchor="middle" fill="#fff" font-size="14">[Pessoa]</text>
+<text x="190" y="636" text-anchor="middle" fill="#fff" font-size="14.5">Acompanha vendas e</text><text x="190" y="655" text-anchor="middle" fill="#fff" font-size="14.5">chamados (Thiago Braga)</text></g>
+<!-- Loja -->
+<rect x="540" y="290" width="330" height="190" rx="14" fill="#1168bd"/>
+<text x="705" y="335" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold">Loja VesteBemUai</text><text x="705" y="360" text-anchor="middle" fill="#fff" font-size="14">[Sistema de software – monolítico]</text>
+<text x="705" y="395" text-anchor="middle" fill="#fff" font-size="14.5">Concentra pedidos, estoque,</text><text x="705" y="416" text-anchor="middle" fill="#fff" font-size="14.5">pagamentos e notificações</text><text x="705" y="437" text-anchor="middle" fill="#fff" font-size="14.5">em uma única aplicação</text>
+<!-- SMTP -->
+<rect x="1060" y="130" width="290" height="170" rx="14" fill="#8a8a8a"/>
+<text x="1205" y="175" text-anchor="middle" fill="#fff" font-size="21" font-weight="bold">Servidor de e-mail</text><text x="1205" y="199" text-anchor="middle" fill="#fff" font-size="14">[Sistema externo]</text>
+<text x="1205" y="232" text-anchor="middle" fill="#fff" font-size="14.5">Entrega os e-mails.</text><text x="1205" y="253" text-anchor="middle" fill="#fff" font-size="14.5">Na PoC: Mailpit</text>
+<!-- arrows -->
+<path d="M310,290 L540,350" stroke="#555" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#a)"/>
+<text x="400" y="290" font-size="15" fill="#333">Faz pedidos</text><text x="400" y="309" font-size="13" fill="#666">[HTTPS/JSON]</text>
+<path d="M310,595 L540,430" stroke="#555" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#a)"/>
+<text x="420" y="545" font-size="15" fill="#333">Consulta pedidos</text><text x="420" y="564" font-size="13" fill="#666">[HTTPS/JSON]</text>
+<path d="M870,340 L1060,255" stroke="#b3261e" stroke-width="3.5" fill="none" marker-end="url(#r)"/>
+<text x="890" y="362" font-size="15" fill="#b3261e" font-weight="bold">Envia a confirmação</text><text x="890" y="382" font-size="15" fill="#b3261e" font-weight="bold">durante o checkout</text><text x="890" y="401" font-size="13" fill="#b3261e">[SMTP, síncrono]</text>
+<path d="M1150,130 C1100,40 400,40 250,140" stroke="#555" stroke-width="2.5" fill="none" stroke-dasharray="8 5" marker-end="url(#a)"/>
+<text x="700" y="98" text-anchor="middle" font-size="15" fill="#333">Entrega o e-mail de confirmação</text>
+<!-- callout -->
+<rect x="930" y="520" width="420" height="150" rx="12" fill="#fdecea" stroke="#b3261e" stroke-width="2"/>
+<text x="950" y="552" font-size="16" font-weight="bold" fill="#b3261e">Ponto de falha (linha de base S1.5)</text>
+<text x="950" y="582" font-size="14.5" fill="#1d2420">Se o servidor de e-mail cai, o checkout</text>
+<text x="950" y="604" font-size="14.5" fill="#1d2420">falha junto: 0 de 100 pedidos concluídos</text>
+<text x="950" y="626" font-size="14.5" fill="#1d2420">com o Mailpit parado; 100 de 100 com</text>
+<text x="950" y="648" font-size="14.5" fill="#1d2420">o Mailpit no ar.</text>
+</g>
+<text x="700" y="780" text-anchor="middle" font-size="14" fill="#555">Legenda: azul escuro = pessoa · azul = sistema em estudo · cinza = sistema externo · seta vermelha = dependência síncrona crítica</text>
+</svg>

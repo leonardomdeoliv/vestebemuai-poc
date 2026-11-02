@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – checkout com o Mailpit no ar (RF01)</div><pre><span class="p">vestebemuai-poc $</span> curl -i -X POST localhost:8080/pedidos -d '{...Gabriela Castro, Saia plissada M Preto...}'
+HTTP/1.1 201 
+Location: /pedidos/742ee25b-ae86-43e8-8116-259778ccc495
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Wed, 28 Oct 2026 23:24:50 GMT
+
+{&quot;id&quot;:&quot;742ee25b-ae86-43e8-8116-259778ccc495&quot;,&quot;clienteNome&quot;:&quot;Gabriela Castro&quot;,&quot;clienteEmail&quot;:&quot;gabriela.castro@exemplo.com&quot;,&quot;status&quot;:&quot;CONFIRMADO&quot;,&quot;total&quot;:99.90,&quot;criadoEm&quot;:&quot;2026-10-28T23:24:50.479604018Z&quot;,&quot;itens&quot;:[{&quot;produto&quot;:&quot;Saia plissada&quot;,&quot;tamanho&quot;:&quot;M&quot;,&quot;cor&quot;:&quot;Preto&quot;,&quot;quantidade&quot;:1,&quot;precoUnitario&quot;:99.90}]}</pre></div>
