@@ -8,8 +8,8 @@
 
 ## 1. Evidência de planejamento
 
-Quadro Kanban no Trello com as listas **A fazer**, **Fazendo** e **Feito**, um cartão por task
-(cartões em [trello-cartoes.md](trello-cartoes.md)).
+Quadro Kanban no [GitHub Projects](https://github.com/users/leonardomdeoliv/projects/1), com uma issue por task
+([issues da Sprint 1](https://github.com/leonardomdeoliv/vestebemuai-poc/milestone/1?closed=1)).
 
 | Task | Item | Requisito | Critério de aceite | Estimativa | Dias planejados | Situação |
 |---|---|---|---|---|---|---|
