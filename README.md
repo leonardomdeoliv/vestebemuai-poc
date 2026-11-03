@@ -7,7 +7,7 @@ para que o checkout deixe de depender do servidor de e-mail.
 
 | Sprint | Período | Objetivo | Situação |
 |---|---|---|---|
-| 1 | 02/11 a 08/11/2026 | Fundação e estado atual: ambiente, monolítico simulado, linha de base, C4 atual, ADR-001 | Em andamento |
+| 1 | 02/11 a 08/11/2026 | Fundação e estado atual: ambiente, monolítico simulado, linha de base, C4 atual, ADR-001 | Concluída |
 | 2 | 09/11 a 15/11/2026 | Extração do serviço de notificações: evento, reenvio, DLQ, idempotência | A fazer |
 | 3 | 16/11 a 22/11/2026 | Validação (H1 a H4), evidência na AWS com Terraform e DAS final | A fazer |
 
