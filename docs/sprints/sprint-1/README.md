@@ -1,7 +1,7 @@
 # Sprint 1 – Fundação e estado atual
 
 - **Período planejado:** 02/11 a 08/11/2026 (entrega em 08/11)
-- **Execução:** iniciada antecipadamente em 28/10/2026
+- **Execução:** de 02/11 a 05/11/2026
 - **Objetivo:** montar o ambiente, construir o monolítico simulado, medir o problema atual (linha de base)
   e documentar o estado atual com C4 e a ADR-001.
 - **Capacidade:** cerca de 15 horas na semana (premissa P6).

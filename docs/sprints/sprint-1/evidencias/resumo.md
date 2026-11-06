@@ -1,6 +1,6 @@
 # Linha de base - checkout no monolitico (estado atual)
 
-Executado em 28/10/2026 23:24 com 100 pedidos por cenario.
+Executado em 02/11/2026 23:24 com 100 pedidos por cenario.
 
 | Cenario | Enviados | Concluidos (HTTP 201) | Falhas | Gravados no banco | Tempo medio (ms) | Duracao total (ms) |
 |---|---|---|---|---|---|---|

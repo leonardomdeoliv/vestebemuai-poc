@@ -1,7 +1,7 @@
 # ADR-001: Usar o padrão Strangler Fig para extrair as notificações
 
 - **Status:** Aceita
-- **Data:** 28/10/2026
+- **Data:** 02/11/2026
 - **Decisores:** Leonardo (arquiteto e desenvolvedor do projeto)
 
 ## Contexto

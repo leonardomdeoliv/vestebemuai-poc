@@ -51,7 +51,7 @@ Rodar o monolítico sem Docker (banco H2 em memória; o e-mail ainda precisa do 
 ```
 
 Envia 100 pedidos com o Mailpit no ar e 100 com o Mailpit parado. O resultado vai para
-`docs/sprints/sprint-1/evidencias/`. Resultado de 28/10/2026:
+`docs/sprints/sprint-1/evidencias/`. Resultado de 02/11/2026:
 
 | Cenário | Enviados | Concluídos | Gravados no banco | Tempo médio |
 |---|---|---|---|---|
