@@ -38,7 +38,7 @@ Quadro Kanban no [GitHub Projects](https://github.com/users/leonardomdeoliv/proj
 | Task | Resultado | Link |
 |---|---|---|
 | S1.1 | Documento de requisitos e critérios de aceite | [docs/requisitos.md](../../requisitos.md) |
-| S1.2 | Ambiente com os quatro serviços no ar (`01-docker-compose-ps.png`, `03-rabbitmq-painel.png`) | [docker-compose.yml](../../../docker-compose.yml) |
+| S1.2 | Ambiente com os quatro serviços no ar (`01-docker-compose-ps.png`, `03-rabbitmq-painel.png`) e orçamento de US$ 5 no AWS Budgets (`r2-aws-budget.png`) | [docker-compose.yml](../../../docker-compose.yml) |
 | S1.3 | Pedido criado (HTTP 201) e e-mail de confirmação no Mailpit (`08a-post-pedido-201.png`, `06-mailpit-email-confirmacao.png`) | [monolito/](../../../monolito) |
 | S1.4 | Diagramas C4 de contexto e de contêineres | [c4-contexto.png](../../c4/c4-contexto.png), [c4-conteineres.png](../../c4/c4-conteineres.png) |
 | S1.5 | Linha de base: 0 de 100 pedidos concluídos com o Mailpit parado (`10-grafico-linha-de-base.png`) | [resumo.md](evidencias/resumo.md), [CSV controle](evidencias/linha-de-base-controle.csv), [CSV falha](evidencias/linha-de-base-falha.csv) |
