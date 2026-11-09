@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -21,15 +22,20 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(properties = "management.health.mail.enabled=false")
+/**
+ * Modo antigo (Sprint 1), mantido atras da flag vestebemuai.notificacao.modo=sincrono
+ * para comparar antes e depois na Sprint 3.
+ */
+@SpringBootTest(properties = "vestebemuai.notificacao.modo=sincrono")
 @AutoConfigureMockMvc
 @ActiveProfiles("h2")
-class CheckoutTest {
+class CheckoutSincronoTest {
 
     private static final String PEDIDO = """
             {
@@ -51,6 +57,9 @@ class CheckoutTest {
     @MockitoBean
     JavaMailSender mailSender;
 
+    @MockitoBean
+    RabbitTemplate rabbit;
+
     @BeforeEach
     void setUp() {
         pedidos.deleteAll();
@@ -58,7 +67,7 @@ class CheckoutTest {
     }
 
     @Test
-    @DisplayName("RF01: registra o pedido com itens (produto, tamanho e cor) e envia o e-mail")
+    @DisplayName("Modo sincrono: registra o pedido e envia o e-mail dentro do checkout")
     void registraPedidoComItens() throws Exception {
         mvc.perform(post("/pedidos").contentType(MediaType.APPLICATION_JSON).content(PEDIDO))
                 .andExpect(status().isCreated())
@@ -69,10 +78,11 @@ class CheckoutTest {
 
         assertThat(pedidos.count()).isEqualTo(1);
         verify(mailSender, times(1)).send(any(MimeMessage.class));
+        verifyNoInteractions(rabbit);
     }
 
     @Test
-    @DisplayName("Estado atual (P1): com o SMTP fora do ar o checkout falha e o pedido se perde")
+    @DisplayName("Modo sincrono (P1): com o SMTP fora do ar o checkout falha e o pedido se perde")
     void checkoutFalhaComSmtpForaDoAr() throws Exception {
         doThrow(new MailSendException("Connection refused")).when(mailSender).send(any(MimeMessage.class));
 

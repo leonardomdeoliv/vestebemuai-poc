@@ -18,8 +18,9 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 /**
- * Modulo de notificacoes que hoje vive dentro do monolitico.
- * E este modulo que sera extraido para um microsservico na Sprint 2.
+ * Modulo de notificacoes antigo, dentro do monolitico.
+ * Desde a Sprint 2 ele so e usado no modo "sincrono" (vestebemuai.notificacao.modo);
+ * no modo padrao o e-mail sai pelo servico notificacoes-service (Strangler Fig).
  */
 @Service
 public class EmailConfirmacaoService {

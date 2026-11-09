@@ -1,18 +1,24 @@
 package br.com.vestebemuai.monolito.pedido;
 
 import br.com.vestebemuai.monolito.notificacao.EmailConfirmacaoService;
+import br.com.vestebemuai.monolito.notificacao.PedidoCriadoEvento;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Checkout do monolitico, no formato "estado atual" (antes da extracao).
+ * Checkout do monolitico.
  *
- * O pedido e gravado e o e-mail de confirmacao e enviado na MESMA transacao e
- * na MESMA thread da requisicao. Se o servidor de e-mail estiver fora do ar, o
- * envio lanca excecao, a transacao sofre rollback e o cliente perde o pedido.
- * Esse e o acoplamento que a Sprint 2 vai remover com o padrao Strangler Fig.
+ * Sprint 2 (Strangler Fig, S2.6): no modo "fila" (padrao) o checkout so grava o
+ * pedido e registra o evento PedidoCriado, que e publicado no RabbitMQ depois do
+ * commit. O e-mail passa a ser responsabilidade do servico de notificacoes, entao
+ * uma falha no SMTP nao derruba mais o pedido.
+ *
+ * O modo "sincrono" mantem o comportamento da Sprint 1 (e-mail na mesma transacao)
+ * so para comparar antes e depois na Sprint 3 e permitir voltar atras.
  */
 @Service
 public class CheckoutService {
@@ -21,10 +27,17 @@ public class CheckoutService {
 
     private final PedidoRepository pedidos;
     private final EmailConfirmacaoService emailConfirmacao;
+    private final ApplicationEventPublisher eventos;
+    private final ModoNotificacao modo;
 
-    public CheckoutService(PedidoRepository pedidos, EmailConfirmacaoService emailConfirmacao) {
+    public CheckoutService(PedidoRepository pedidos, EmailConfirmacaoService emailConfirmacao,
+                           ApplicationEventPublisher eventos,
+                           @Value("${vestebemuai.notificacao.modo:fila}") ModoNotificacao modo) {
         this.pedidos = pedidos;
         this.emailConfirmacao = emailConfirmacao;
+        this.eventos = eventos;
+        this.modo = modo;
+        log.info("Checkout iniciado com notificacao no modo {}", modo);
     }
 
     @Transactional
@@ -34,8 +47,13 @@ public class CheckoutService {
                 new ItemPedido(i.produto(), i.tamanho(), i.cor(), i.quantidade(), i.precoUnitario())));
         pedidos.save(pedido);
 
-        // Envio sincrono: o checkout espera o SMTP responder.
-        emailConfirmacao.enviar(pedido);
+        if (modo == ModoNotificacao.SINCRONO) {
+            // Modo antigo (Sprint 1): o checkout espera o SMTP responder.
+            emailConfirmacao.enviar(pedido);
+        } else {
+            // Modo novo: publicado no RabbitMQ so depois do commit (PublicadorPedidoCriado).
+            eventos.publishEvent(PedidoCriadoEvento.de(pedido));
+        }
 
         log.info("Pedido {} concluido, total R$ {}", pedido.getId(), pedido.getTotal());
         return pedido;
