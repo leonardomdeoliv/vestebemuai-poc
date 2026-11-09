@@ -18,8 +18,8 @@ services:
       timeout: 3s
       retries: 10
 
-  # Broker de mensagens. Na Sprint 1 ele so sobe; o monolito passa a publicar
-  # o evento PedidoCriado nele na Sprint 2. Painel: http://localhost:15672
+  # Broker de mensagens. Desde a Sprint 2 o monolito publica o evento PedidoCriado
+  # no exchange "pedidos" e o servico de notificacoes consome. Painel: http://localhost:15672
   rabbitmq:
     image: rabbitmq:3.13-management
     environment:
@@ -49,8 +49,32 @@ services:
       DB_PASSWORD: vestebemuai
       SMTP_HOST: mailpit
       SMTP_PORT: 1025
+      RABBITMQ_HOST: rabbitmq
+      # fila (padrao, Sprint 2) ou sincrono (modo antigo da Sprint 1, para comparar na Sprint 3)
+      NOTIFICACAO_MODO: ${NOTIFICACAO_MODO:-fila}
     ports:
       - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
+  # Sprint 2: servico extraido do monolito (Strangler Fig). Consome PedidoCriado,
+  # envia o e-mail, tenta de novo 3 vezes e manda para a DLQ. Usa o schema "notificacoes".
+  notificacoes:
+    build: ./notificacoes-service
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/vestebemuai
+      DB_USER: vestebemuai
+      DB_PASSWORD: vestebemuai
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      RABBITMQ_HOST: rabbitmq
+    ports:
+      - "8081:8081"
     depends_on:
       postgres:
         condition: service_healthy

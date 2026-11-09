@@ -1,0 +1,6 @@
+# Perfil para rodar o servico sem Docker (banco em memoria).
+spring:
+  datasource:
+    url: jdbc:h2:mem:notificacoes;INIT=CREATE SCHEMA IF NOT EXISTS notificacoes
+    username: sa
+    password:

@@ -1,0 +1,55 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: notificacoes-service
+  # O servico tem o proprio schema (notificacoes) no mesmo PostgreSQL: so ele le e escreve ali.
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/vestebemuai}
+    username: ${DB_USER:vestebemuai}
+    password: ${DB_PASSWORD:vestebemuai}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate.default_schema: notificacoes
+      hibernate.hbm2ddl.create_namespaces: true
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:1025}
+    properties:
+      mail.smtp.connectiontimeout: 5000
+      mail.smtp.timeout: 5000
+      mail.smtp.writetimeout: 5000
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:vestebemuai}
+    password: ${RABBITMQ_PASSWORD:vestebemuai}
+    listener:
+      simple:
+        # RF04: 1 envio + 3 reenvios, esperando 2 s, 4 s e 8 s entre eles.
+        retry:
+          enabled: true
+          max-attempts: 4
+          initial-interval: 2s
+          multiplier: 2
+          max-interval: 8s
+        # RF05: esgotadas as tentativas, a mensagem e rejeitada sem voltar para a fila
+        # e o RabbitMQ a manda para a DLQ (dead letter exchange da fila principal).
+        default-requeue-rejected: false
+
+vestebemuai:
+  email:
+    remetente: pedidos@vestebemuai.com.br
+    assunto: VesteBemUai - Pedido confirmado
+    # RF06: o modelo do e-mail fica em um arquivo do servico; mudar o texto exige publicar so este servico.
+    modelo: classpath:templates/email-confirmacao.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
