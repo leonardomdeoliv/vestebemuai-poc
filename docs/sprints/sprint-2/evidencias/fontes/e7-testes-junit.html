@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – testes automatizados do monolítico e do serviço de notificações</div><pre><span class="p">vestebemuai-poc $</span> cd monolito &amp;&amp; mvn test
+[INFO] Running br.com.vestebemuai.monolito.CheckoutSincronoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.359 s -- in br.com.vestebemuai.monolito.CheckoutSincronoTest
+[INFO] Running br.com.vestebemuai.monolito.CheckoutFilaTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.944 s -- in br.com.vestebemuai.monolito.CheckoutFilaTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] <span class="ok">BUILD SUCCESS</span>
+[INFO] Total time:  8.977 s
+
+<span class="p">vestebemuai-poc $</span> cd notificacoes-service &amp;&amp; mvn test
+[INFO] Running br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.217 s -- in br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+[INFO] Running br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.732 s -- in br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] <span class="ok">BUILD SUCCESS</span>
+[INFO] Total time:  8.766 s</pre></div>

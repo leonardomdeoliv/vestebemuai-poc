@@ -1,0 +1,12 @@
+vestebemuai-poc $ curl -i -X POST localhost:8080/pedidos -H 'Content-Type: application/json' -d '{...Ana Souza, Vestido midi floral P Verde...}'
+HTTP/1.1 201 
+Location: /pedidos/59e6e816-bced-4bc0-90b6-6a11593cdbe5
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Mon, 09 Nov 2026 23:45:43 GMT
+
+{"id":"59e6e816-bced-4bc0-90b6-6a11593cdbe5","clienteNome":"Ana Souza","clienteEmail":"ana.souza@exemplo.com","status":"CONFIRMADO","total":229.80,"criadoEm":"2026-11-09T23:45:43.021573529Z","itens":[{"produto":"Vestido midi floral","tamanho":"P","cor":"Verde","quantidade":1,"precoUnitario":189.90},{"produto":"Bone aba curva","tamanho":"U","cor":"Preto","quantidade":1,"precoUnitario":39.90}]}
+
+vestebemuai-poc $ docker compose logs monolito | grep -E 'concluido|PedidoCriado'
+2026-11-09T23:45:43.113Z INFO b.c.v.monolito.pedido.CheckoutService : Pedido 59e6e816-bced-4bc0-90b6-6a11593cdbe5 concluido, total R$ 229.80
+2026-11-09T23:45:43.140Z INFO b.c.v.m.n.PublicadorPedidoCriado : Evento PedidoCriado daf69a4e-f724-4af8-83ce-82028a599f12 publicado para o pedido 59e6e816-bced-4bc0-90b6-6a11593cdbe5

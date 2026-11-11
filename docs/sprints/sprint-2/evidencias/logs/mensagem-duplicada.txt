@@ -1,0 +1,9 @@
+vestebemuai-poc $ ./scripts/mensagem-duplicada.sh
+>> eventoId: ba7ddf30-59da-4eff-98bf-2c9e767f1791  destinatario: duplicada-ba7ddf30@exemplo.com
+>> publicacao 1: {"routed":true}
+>> publicacao 2: {"routed":true}
+>> mensagens publicadas: 2 | e-mails entregues para duplicada-ba7ddf30@exemplo.com: 1
+>> OK: a mensagem duplicada foi ignorada (RNF02)
+
+vestebemuai-poc $ docker compose logs notificacoes | grep "ja processado"
+2026-11-09T23:47:45.674Z WARN b.c.v.n.evento.NotificacaoPedidoService : Evento ba7ddf30-59da-4eff-98bf-2c9e767f1791 do pedido 9b1c8442-9b2c-466c-9f28-f650148db698 ja processado: mensagem duplicada ignorada, nenhum e-mail enviado

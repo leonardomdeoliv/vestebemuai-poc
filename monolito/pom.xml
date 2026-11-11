@@ -13,9 +13,9 @@
 
     <groupId>br.com.vestebemuai</groupId>
     <artifactId>monolito</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>monolito</name>
-    <description>Monolitico simulado da VesteBemUai (checkout com e-mail sincrono)</description>
+    <description>Monolitico simulado da VesteBemUai (checkout que publica o evento PedidoCriado)</description>
 
     <properties>
         <java.version>21</java.version>
@@ -37,6 +37,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

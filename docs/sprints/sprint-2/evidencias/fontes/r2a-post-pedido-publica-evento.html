@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – checkout publica o evento PedidoCriado (RF02)</div><pre><span class="p">vestebemuai-poc $</span> curl -i -X POST localhost:8080/pedidos -H 'Content-Type: application/json' -d '{...Ana Souza, Vestido midi floral P Verde...}'
+<span class="ok">HTTP/1.1 201 </span>
+Location: /pedidos/59e6e816-bced-4bc0-90b6-6a11593cdbe5
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Mon, 09 Nov 2026 23:45:43 GMT
+
+{"id":"59e6e816-bced-4bc0-90b6-6a11593cdbe5","clienteNome":"Ana Souza","clienteEmail":"ana.souza@exemplo.com","status":"CONFIRMADO","total":229.80,"criadoEm":"2026-11-09T23:45:43.021573529Z","itens":[{"produto":"Vestido midi floral","tamanho":"P","cor":"Verde","quantidade":1,"precoUnitario":189.90},{"produto":"Bone aba curva","tamanho":"U","cor":"Preto","quantidade":1,"precoUnitario":39.90}]}
+
+<span class="p">vestebemuai-poc $</span> docker compose logs monolito | grep -E 'concluido|PedidoCriado'
+2026-11-09T23:45:43.113Z INFO b.c.v.monolito.pedido.CheckoutService : Pedido 59e6e816-bced-4bc0-90b6-6a11593cdbe5 concluido, total R$ 229.80
+2026-11-09T23:45:43.140Z INFO b.c.v.m.n.PublicadorPedidoCriado : Evento PedidoCriado daf69a4e-f724-4af8-83ce-82028a599f12 publicado para o pedido 59e6e816-bced-4bc0-90b6-6a11593cdbe5</pre></div>

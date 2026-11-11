@@ -1,0 +1,17 @@
+vestebemuai-poc $ cd monolito && mvn test
+[INFO] Running br.com.vestebemuai.monolito.CheckoutSincronoTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.359 s -- in br.com.vestebemuai.monolito.CheckoutSincronoTest
+[INFO] Running br.com.vestebemuai.monolito.CheckoutFilaTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.944 s -- in br.com.vestebemuai.monolito.CheckoutFilaTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  8.977 s
+
+vestebemuai-poc $ cd notificacoes-service && mvn test
+[INFO] Running br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.217 s -- in br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+[INFO] Running br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.732 s -- in br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  8.766 s

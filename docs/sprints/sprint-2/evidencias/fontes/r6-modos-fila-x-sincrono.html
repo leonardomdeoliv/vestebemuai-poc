@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – checkout com o e-mail fora do ar: modo fila x modo síncrono (S2.6)</div><pre><span class="p">vestebemuai-poc $</span> docker compose stop mailpit        # servidor de e-mail fora do ar
+
+# Modo novo (padrao da Sprint 2): NOTIFICACAO_MODO=fila
+2026-11-09T23:48:19.622Z INFO b.c.v.monolito.pedido.CheckoutService : Checkout iniciado com notificacao no modo FILA
+<span class="p">vestebemuai-poc $</span> curl -s localhost:8080/pedidos/total
+6
+<span class="p">vestebemuai-poc $</span> curl -X POST localhost:8080/pedidos -d {...Diego Rocha, Tenis casual 40 Branco...}
+<span class="ok">HTTP 201 em 0.218070s</span>
+    CONFIRMADO - 57f34077-b5e7-40e2-af49-668536a797b0
+<span class="p">vestebemuai-poc $</span> curl -s localhost:8080/pedidos/total
+7
+
+# Modo antigo (Sprint 1), mantido so para comparar: NOTIFICACAO_MODO=sincrono
+<span class="p">vestebemuai-poc $</span> NOTIFICACAO_MODO=sincrono docker compose up -d --no-deps monolito
+2026-11-09T23:48:39.831Z INFO b.c.v.monolito.pedido.CheckoutService : Checkout iniciado com notificacao no modo SINCRONO
+<span class="p">vestebemuai-poc $</span> curl -X POST localhost:8080/pedidos -d {...Diego Rocha, Tenis casual 40 Branco...}
+<span class="er">HTTP 503 em 0.308473s</span>
+    Pedido não concluído - Não foi possível concluir o pedido: falha ao enviar o e-mail de confirmação.
+<span class="p">vestebemuai-poc $</span> curl -s localhost:8080/pedidos/total
+7</pre></div>

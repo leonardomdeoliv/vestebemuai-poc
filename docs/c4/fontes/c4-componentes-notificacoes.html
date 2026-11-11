@@ -1,0 +1,55 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:"DejaVu Sans",Arial,sans-serif}svg text{font-family:"DejaVu Sans",Arial,sans-serif}</style>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>
+<text x="700" y="44" text-anchor="middle" font-size="28" font-weight="bold" fill="#1d2420">C4 nível 3 – Componentes do serviço de notificações</text>
+<text x="700" y="76" text-anchor="middle" font-size="17" fill="#555">notificacoes-service, pacote br.com.vestebemuai.notificacoes (Sprint 2)</text>
+<!-- Equipe -->
+<g><circle cx="150" cy="140" r="34" fill="#08427b"/><rect x="50" y="172" width="200" height="96" rx="22" fill="#08427b"/>
+<text x="150" y="206" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">Equipe de TI</text><text x="150" y="228" text-anchor="middle" fill="#fff" font-size="13">[Pessoa]</text><text x="150" y="250" text-anchor="middle" fill="#fff" font-size="13">persona Anderson</text></g>
+<!-- RabbitMQ -->
+<rect x="40" y="400" width="240" height="190" rx="14" fill="#438dd5"/>
+<text x="160" y="438" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">RabbitMQ</text><text x="160" y="460" text-anchor="middle" fill="#fff" font-size="13">[Contêiner]</text>
+<text x="160" y="494" text-anchor="middle" fill="#fff" font-size="13">notificacoes.pedido-criado</text><text x="160" y="516" text-anchor="middle" fill="#fff" font-size="13">notificacoes.dlx</text><text x="160" y="538" text-anchor="middle" fill="#fff" font-size="13">notificacoes.dlq</text>
+<!-- Boundary -->
+<rect x="330" y="110" width="790" height="700" rx="10" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="10 6"/>
+<text x="350" y="790" font-size="17" font-weight="bold" fill="#444">Serviço de notificações</text><text x="350" y="770" font-size="13" fill="#666">[Contêiner: Java 21, Spring Boot 3 – 8081]</text>
+<!-- components -->
+<g font-size="13" text-anchor="middle">
+<rect x="370" y="150" width="220" height="120" rx="10" fill="#85bbf0"/><text x="480" y="180" font-size="16" font-weight="bold" fill="#0b3d6e">DlqController</text><text x="480" y="200" fill="#0b3d6e">[@RestController]</text><text x="480" y="226" fill="#1d2420">GET /dlq</text><text x="480" y="246" fill="#1d2420">POST /dlq/reprocessar (RF05)</text>
+<rect x="370" y="410" width="220" height="140" rx="10" fill="#85bbf0"/><text x="480" y="440" font-size="16" font-weight="bold" fill="#0b3d6e">PedidoCriadoListener</text><text x="480" y="460" fill="#0b3d6e">[@RabbitListener]</text><text x="480" y="486" fill="#1d2420">Consome o evento (RF03)</text><text x="480" y="506" fill="#1d2420">Retry 2 s, 4 s, 8 s (RF04)</text><text x="480" y="526" fill="#1d2420">Loga cada tentativa</text>
+<rect x="640" y="410" width="220" height="140" rx="10" fill="#85bbf0"/><text x="750" y="440" font-size="16" font-weight="bold" fill="#0b3d6e">NotificacaoPedido</text><text x="750" y="458" font-size="16" font-weight="bold" fill="#0b3d6e">Service</text><text x="750" y="478" fill="#0b3d6e">[@Service, @Transactional]</text><text x="750" y="504" fill="#1d2420">Idempotência (RNF02)</text><text x="750" y="524" fill="#1d2420">Métricas no Actuator</text>
+<rect x="640" y="640" width="220" height="110" rx="10" fill="#85bbf0"/><text x="750" y="670" font-size="16" font-weight="bold" fill="#0b3d6e">EventoProcessado</text><text x="750" y="688" font-size="16" font-weight="bold" fill="#0b3d6e">Repository</text><text x="750" y="710" fill="#0b3d6e">[Spring Data JPA]</text><text x="750" y="732" fill="#1d2420">tabela evento_processado</text>
+<rect x="890" y="410" width="210" height="140" rx="10" fill="#85bbf0"/><text x="995" y="440" font-size="16" font-weight="bold" fill="#0b3d6e">EnvioEmailService</text><text x="995" y="460" fill="#0b3d6e">[@Service, JavaMailSender]</text><text x="995" y="490" fill="#1d2420">Monta e envia o</text><text x="995" y="510" fill="#1d2420">e-mail de confirmação</text>
+<rect x="890" y="150" width="210" height="120" rx="10" fill="#85bbf0"/><text x="995" y="180" font-size="16" font-weight="bold" fill="#0b3d6e">ModeloEmail</text><text x="995" y="200" fill="#0b3d6e">[@Component]</text><text x="995" y="226" fill="#1d2420">templates/email-</text><text x="995" y="246" fill="#1d2420">confirmacao.html (RF06)</text>
+<rect x="370" y="640" width="220" height="110" rx="10" fill="#85bbf0"/><text x="480" y="670" font-size="16" font-weight="bold" fill="#0b3d6e">RabbitConfig</text><text x="480" y="690" fill="#0b3d6e">[@Configuration]</text><text x="480" y="714" fill="#1d2420">Exchange, fila, DLX, DLQ</text><text x="480" y="734" fill="#1d2420">e conversor JSON</text>
+</g>
+<!-- externals -->
+<rect x="620" y="860" width="260" height="110" rx="14" fill="#438dd5"/><text x="750" y="896" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">PostgreSQL</text><text x="750" y="918" text-anchor="middle" fill="#fff" font-size="13">[Contêiner]</text><text x="750" y="942" text-anchor="middle" fill="#fff" font-size="13">schema notificacoes</text>
+<rect x="1160" y="400" width="210" height="160" rx="14" fill="#8a8a8a"/><text x="1265" y="440" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">Servidor de</text><text x="1265" y="462" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">e-mail</text><text x="1265" y="486" text-anchor="middle" fill="#fff" font-size="13">[Sistema externo]</text><text x="1265" y="512" text-anchor="middle" fill="#fff" font-size="13">Mailpit na PoC</text>
+<!-- arrows -->
+<g stroke="#555" stroke-width="2.3" fill="none" stroke-dasharray="8 5">
+<path d="M250,220 L370,210" marker-end="url(#a)"/>
+<path d="M370,250 L230,400" marker-end="url(#a)"/>
+<path d="M280,480 L370,480" marker-end="url(#a)"/>
+<path d="M590,430 L640,430" marker-end="url(#a)"/>
+<path d="M750,550 L750,640" marker-end="url(#a)"/>
+<path d="M860,430 L890,430" marker-end="url(#a)"/>
+<path d="M995,410 L995,270" marker-end="url(#a)"/>
+<path d="M1100,430 L1160,430" marker-end="url(#a)"/>
+<path d="M750,750 L750,860" marker-end="url(#a)"/>
+<path d="M370,700 L220,590" marker-end="url(#a)"/>
+</g>
+<g font-size="12.5" fill="#333">
+<text x="262" y="196">Reprocessa a DLQ</text>
+<text x="282" y="318" text-anchor="end">Move DLQ → fila</text><text x="282" y="334" text-anchor="end" fill="#666">[AMQP]</text>
+<text x="284" y="470" font-size="12">Entrega</text>
+<text x="615" y="402" text-anchor="middle">notificar()</text>
+<text x="760" y="600">existe? / grava eventoId</text>
+<text x="875" y="402" text-anchor="middle">envia</text>
+<text x="1005" y="340">usa o modelo</text>
+<text x="1130" y="402" text-anchor="middle">[SMTP]</text>
+<text x="760" y="842">[JDBC/JPA]</text>
+<text x="300" y="700" text-anchor="end">Declara a topologia</text><text x="300" y="716" text-anchor="end" fill="#666">na inicialização</text>
+</g>
+<text x="700" y="992" text-anchor="middle" font-size="14" fill="#555">Legenda: azul claro = componente do serviço · azul = contêiner · cinza = externo</text>
+</svg>

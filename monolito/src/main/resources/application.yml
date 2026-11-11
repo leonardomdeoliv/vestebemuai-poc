@@ -19,11 +19,20 @@ spring:
       mail.smtp.connectiontimeout: 5000
       mail.smtp.timeout: 5000
       mail.smtp.writetimeout: 5000
-  # O RabbitMQ ja sobe no Docker Compose da Sprint 1, mas so passa a ser usado na Sprint 2.
+  # Sprint 2: o monolito publica o evento PedidoCriado no RabbitMQ.
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:vestebemuai}
+    password: ${RABBITMQ_PASSWORD:vestebemuai}
 
 vestebemuai:
   email:
     remetente: pedidos@vestebemuai.com.br
+  notificacao:
+    # fila     = publica PedidoCriado e o servico de notificacoes envia o e-mail (padrao, Sprint 2)
+    # sincrono = modo antigo da Sprint 1, envia o e-mail dentro do checkout (usado para comparar na Sprint 3)
+    modo: ${NOTIFICACAO_MODO:fila}
 
 management:
   endpoints:
@@ -31,5 +40,6 @@ management:
       exposure:
         include: health,info,metrics
   health:
+    # No modo fila o checkout nao depende mais do SMTP, entao o health do monolito nao olha o e-mail.
     mail:
-      enabled: true
+      enabled: ${MAIL_HEALTH:false}
