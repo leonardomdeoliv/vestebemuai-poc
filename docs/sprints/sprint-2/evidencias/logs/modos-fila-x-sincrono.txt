@@ -1,0 +1,20 @@
+vestebemuai-poc $ docker compose stop mailpit        # servidor de e-mail fora do ar
+
+# Modo novo (padrao da Sprint 2): NOTIFICACAO_MODO=fila
+2026-11-09T23:48:19.622Z INFO b.c.v.monolito.pedido.CheckoutService : Checkout iniciado com notificacao no modo FILA
+vestebemuai-poc $ curl -s localhost:8080/pedidos/total
+6
+vestebemuai-poc $ curl -X POST localhost:8080/pedidos -d {...Diego Rocha, Tenis casual 40 Branco...}
+HTTP 201 em 0.218070s
+    CONFIRMADO - 57f34077-b5e7-40e2-af49-668536a797b0
+vestebemuai-poc $ curl -s localhost:8080/pedidos/total
+7
+
+# Modo antigo (Sprint 1), mantido so para comparar: NOTIFICACAO_MODO=sincrono
+vestebemuai-poc $ NOTIFICACAO_MODO=sincrono docker compose up -d --no-deps monolito
+2026-11-09T23:48:39.831Z INFO b.c.v.monolito.pedido.CheckoutService : Checkout iniciado com notificacao no modo SINCRONO
+vestebemuai-poc $ curl -X POST localhost:8080/pedidos -d {...Diego Rocha, Tenis casual 40 Branco...}
+HTTP 503 em 0.308473s
+    Pedido não concluído - Não foi possível concluir o pedido: falha ao enviar o e-mail de confirmação.
+vestebemuai-poc $ curl -s localhost:8080/pedidos/total
+7

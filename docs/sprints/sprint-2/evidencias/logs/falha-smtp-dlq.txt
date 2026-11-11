@@ -1,0 +1,13 @@
+vestebemuai-poc $ ./scripts/falha-smtp-dlq.sh
+>> 1. Mailpit parado
+>> 2. POST /pedidos com o SMTP fora do ar: HTTP 201 em 0.013258s
+>> 3. Aguardando as 4 tentativas do servico de notificacoes (cerca de 40 s)...
+Tentativa 1 de 4 falhou para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.SocketTimeoutException: Connect timed out. Nova tentativa em breve.
+Tentativa 2 de 4 falhou para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.UnknownHostException: mailpit. Nova tentativa em breve.
+Tentativa 3 de 4 falhou para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.UnknownHostException: mailpit. Nova tentativa em breve.
+Tentativa 4 de 4 falhou para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.UnknownHostException: mailpit. Mensagem enviada para a DLQ.
+>> 4. Mensagens na DLQ: {"fila":"notificacoes.dlq","mensagens":1}
+>> 5. Mailpit de volta e reprocessamento da DLQ
+{"reprocessadas":1,"destino":"notificacoes.pedido-criado"}
+>> 6. E-mails entregues para dlq-234702@exemplo.com: 1 | DLQ: {"fila":"notificacoes.dlq","mensagens":0}
+>> OK: nenhum pedido perdido e o e-mail saiu depois do reprocessamento

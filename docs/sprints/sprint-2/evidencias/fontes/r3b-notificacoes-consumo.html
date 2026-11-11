@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – serviço de notificações consome o evento e envia o e-mail (RF03)</div><pre><span class="p">vestebemuai-poc $</span> docker compose start notificacoes
+<span class="p">vestebemuai-poc $</span> docker compose logs notificacoes | grep -E "recebido|enviado"
+2026-11-09T23:46:36.018Z INFO b.c.v.n.evento.PedidoCriadoListener : PedidoCriado recebido: evento daf69a4e-f724-4af8-83ce-82028a599f12 pedido 59e6e816-bced-4bc0-90b6-6a11593cdbe5 (tentativa 1 de 4)
+2026-11-09T23:46:36.480Z INFO b.c.v.n.evento.NotificacaoPedidoService : E-mail de confirmacao do pedido 59e6e816-bced-4bc0-90b6-6a11593cdbe5 enviado para ana.souza@exemplo.com (evento daf69a4e-f724-4af8-83ce-82028a599f12)
+2026-11-09T23:46:39.956Z INFO b.c.v.n.evento.PedidoCriadoListener : PedidoCriado recebido: evento 0f19be1f-54bb-493a-bf93-433a0ee41d09 pedido ea0ddb54-8fae-45f7-b7f4-1025049c3c63 (tentativa 1 de 4)
+2026-11-09T23:46:39.971Z INFO b.c.v.n.evento.NotificacaoPedidoService : E-mail de confirmacao do pedido ea0ddb54-8fae-45f7-b7f4-1025049c3c63 enviado para bruno.lima@exemplo.com (evento 0f19be1f-54bb-493a-bf93-433a0ee41d09)
+2026-11-09T23:46:39.975Z INFO b.c.v.n.evento.PedidoCriadoListener : PedidoCriado recebido: evento 80b27497-ad43-45d0-9b60-490293207655 pedido ddf035dd-9260-4fa8-a4cb-7d06dcd1ea6c (tentativa 1 de 4)
+2026-11-09T23:46:39.986Z INFO b.c.v.n.evento.NotificacaoPedidoService : E-mail de confirmacao do pedido ddf035dd-9260-4fa8-a4cb-7d06dcd1ea6c enviado para carla.dias@exemplo.com (evento 80b27497-ad43-45d0-9b60-490293207655)</pre></div>

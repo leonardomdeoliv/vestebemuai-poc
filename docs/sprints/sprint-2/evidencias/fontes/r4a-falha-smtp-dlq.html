@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – reenvio, DLQ e reprocessamento com o Mailpit parado (RF04, RF05)</div><pre><span class="p">vestebemuai-poc $</span> ./scripts/falha-smtp-dlq.sh
+&gt;&gt; 1. Mailpit parado
+&gt;&gt; 2. POST /pedidos com o SMTP fora do ar: <span class="ok">HTTP 201 em 0.013258s</span>
+&gt;&gt; 3. Aguardando as 4 tentativas do servico de notificacoes (cerca de 40 s)...
+<span class="wa">Tentativa 1 de 4 falhou</span> para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.SocketTimeoutException: Connect timed out. Nova tentativa em breve.
+<span class="wa">Tentativa 2 de 4 falhou</span> para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.UnknownHostException: mailpit. Nova tentativa em breve.
+<span class="wa">Tentativa 3 de 4 falhou</span> para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.UnknownHostException: mailpit. Nova tentativa em breve.
+<span class="wa">Tentativa 4 de 4 falhou</span> para o pedido 0d2c9f10-1baf-4209-aa43-efb234672428: java.net.UnknownHostException: mailpit. <span class="er">Mensagem enviada para a DLQ.</span>
+&gt;&gt; 4. Mensagens na DLQ: {"fila":"notificacoes.dlq","mensagens":1}
+&gt;&gt; 5. Mailpit de volta e reprocessamento da DLQ
+{"reprocessadas":1,"destino":"notificacoes.pedido-criado"}
+&gt;&gt; 6. E-mails entregues para dlq-234702@exemplo.com: 1 | DLQ: {"fila":"notificacoes.dlq","mensagens":0}
+&gt;&gt; <span class="ok">OK: nenhum pedido perdido e o e-mail saiu depois do reprocessamento</span></pre></div>
