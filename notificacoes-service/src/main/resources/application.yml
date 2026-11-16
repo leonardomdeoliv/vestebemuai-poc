@@ -30,6 +30,9 @@ spring:
     password: ${RABBITMQ_PASSWORD:vestebemuai}
     listener:
       simple:
+        # S3.1/S3.2: 10 consumidores em paralelo. Cada mensagem com o SMTP fora do ar leva
+        # cerca de 14 s ate a DLQ (2 + 4 + 8 s); com 1 consumidor, 100 pedidos levariam ~25 min.
+        concurrency: 10
         # RF04: 1 envio + 3 reenvios, esperando 2 s, 4 s e 8 s entre eles.
         retry:
           enabled: true
@@ -53,3 +56,6 @@ management:
     web:
       exposure:
         include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

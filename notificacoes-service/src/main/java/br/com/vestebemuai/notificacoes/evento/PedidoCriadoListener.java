@@ -47,6 +47,7 @@ public class PedidoCriadoListener {
             } else {
                 log.error("Tentativa {} de {} falhou para o pedido {}: {}. Mensagem enviada para a DLQ.",
                         tentativa, TOTAL_TENTATIVAS, evento.pedidoId(), causa);
+                metricas.counter("notificacoes.mensagens.dlq").increment();
             }
             throw e;
         }

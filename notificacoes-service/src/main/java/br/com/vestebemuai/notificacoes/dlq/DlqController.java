@@ -1,6 +1,7 @@
 package br.com.vestebemuai.notificacoes.dlq;
 
 import br.com.vestebemuai.notificacoes.config.RabbitConfig;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpAdmin;
@@ -29,10 +30,12 @@ public class DlqController {
 
     private final RabbitTemplate rabbit;
     private final AmqpAdmin admin;
+    private final MeterRegistry metricas;
 
-    public DlqController(RabbitTemplate rabbit, AmqpAdmin admin) {
+    public DlqController(RabbitTemplate rabbit, AmqpAdmin admin, MeterRegistry metricas) {
         this.rabbit = rabbit;
         this.admin = admin;
+        this.metricas = metricas;
     }
 
     @GetMapping
@@ -50,6 +53,7 @@ public class DlqController {
             rabbit.send("", RabbitConfig.FILA, mensagem);
             movidas++;
         }
+        metricas.counter("notificacoes.dlq.reprocessadas").increment(movidas);
         log.info("Reprocessamento da DLQ: {} mensagem(ns) devolvida(s) para {}", movidas, RabbitConfig.FILA);
         return Map.of("reprocessadas", movidas, "destino", RabbitConfig.FILA);
     }
