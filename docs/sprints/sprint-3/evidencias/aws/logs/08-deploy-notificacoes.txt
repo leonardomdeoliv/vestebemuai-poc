@@ -1,0 +1,12 @@
+vestebemuai-poc $ ./scripts/deploy-notificacoes.sh "Frete grátis nas compras acima de R\$ 299." docs/sprints/sprint-3/evidencias/aws
+>> 1. Mudanca no modelo do e-mail (so no servico de notificacoes)
+   9:<p class="aviso">Frete grátis nas compras acima de R$ 299.</p>
+   10:<p class="aviso">Trocas grátis em até 30 dias pelo site.</p>
+>> 2. Pedidos chegando ao monolitico durante o deploy (1 a cada 0,5 s)
+>> 3. docker compose up -d --build --no-deps notificacoes
+   build da imagem: 15.1 s | troca do conteiner ate o health UP: 15.5 s | total: 30.6 s
+>> 4. Monolitico durante o deploy: 66 de 66 pedidos com HTTP 201
+   monolitico nao reiniciou (no ar desde 2026-11-19T22:37:07.229852904Z)
+>> 5. E-mails dos pedidos feitos durante o deploy: 66 de 66 entregues, 0 duplicados; ultimo com o aviso novo: sim
+>> OK: H3 validada, servico publicado sozinho em 30.6 s sem parar o checkout
+

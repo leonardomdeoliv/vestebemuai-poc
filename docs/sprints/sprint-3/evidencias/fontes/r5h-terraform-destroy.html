@@ -1,0 +1,37 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal (Mac do autor) – terraform destroy e conferência de custo (S3.5)</div><pre>infra/terraform $ terraform destroy -no-color -auto-approve
+Plan: 0 to add, 0 to change, 5 to destroy.
+local_sensitive_file.pem: Destroying... [id=1c28d6e03c48cf9a7fd183d32900a92563ce4397]
+local_sensitive_file.pem: Destruction complete after 0s
+aws_instance.poc: Destroying... [id=i-05b10e4d4869b6cdb]
+aws_instance.poc: Destruction complete after 31s
+aws_key_pair.ssh: Destroying... [id=vestebemuai-poc]
+aws_security_group.poc: Destroying... [id=sg-0e7e20b1827e383f4]
+aws_key_pair.ssh: Destruction complete after 1s
+tls_private_key.ssh: Destroying... [id=b7d2ec6486dcc2d8027bd7513161eae54d6e1dc9]
+tls_private_key.ssh: Destruction complete after 0s
+aws_security_group.poc: Destruction complete after 2s
+<span class="ok">Destroy complete! Resources: 5 destroyed.</span>
+
+infra/terraform $ aws ec2 describe-instances --instance-ids i-05b10e4d4869b6cdb ...
+---------------------------------------
+|          DescribeInstances          |
++-------------+-----------------------+
+|   Estado    |          Id           |
++-------------+-----------------------+
+|  <span class="ok">terminated</span> |  i-05b10e4d4869b6cdb  |
++-------------+-----------------------+
+infra/terraform $ terraform state list
+(nenhum recurso)
+
+infra/terraform $ aws budgets describe-budgets ...
+---------------------------------------------------------------
+|                       DescribeBudgets                       |
++-----------+---------+--------------------------+------------+
+| GastoReal | Limite  |          Nome            | Previsto   |
++-----------+---------+--------------------------+------------+
+|  0.0      |  5.0    |  vestebemuai-poc-budget  |  0.0       |
++-----------+---------+--------------------------+------------+</pre></div>

@@ -1,0 +1,18 @@
+vestebemuai-poc $ for m in notificacoes.emails.enviados notificacoes.emails.falhas notificacoes.mensagens.dlq notificacoes.dlq.reprocessadas notificacoes.eventos.duplicados; do echo "$m: $(curl -s localhost:8081/actuator/metrics/$m | python3 -c 'import json,sys; print(json.load(sys.stdin)["measurements"][0]["value"])')"; done
+notificacoes.emails.enviados: 100.0
+notificacoes.emails.falhas: 400.0
+notificacoes.mensagens.dlq: 100.0
+notificacoes.dlq.reprocessadas: 100.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python3.9/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/usr/lib64/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib64/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib64/python3.9/json/decoder.py", line 355, in raw_decode
+notificacoes.eventos.duplicados: 
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+

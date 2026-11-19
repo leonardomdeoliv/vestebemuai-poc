@@ -1,0 +1,12 @@
+vestebemuai-poc $ curl -s localhost:8081/actuator/metrics/notificacoes.emails.falhas; echo
+{"name":"notificacoes.emails.falhas","measurements":[{"statistic":"COUNT","value":400.0}],"availableTags":[]}
+
+vestebemuai-poc $ curl -s localhost:8081/actuator/metrics/notificacoes.mensagens.dlq; echo
+{"name":"notificacoes.mensagens.dlq","measurements":[{"statistic":"COUNT","value":100.0}],"availableTags":[]}
+
+vestebemuai-poc $ curl -s 'localhost:8081/actuator/metrics/notificacoes.fila.mensagens?tag=fila:notificacoes.dlq'; echo
+{"name":"notificacoes.fila.mensagens","description":"Mensagens esperando na fila","measurements":[{"statistic":"VALUE","value":100.0}],"availableTags":[]}
+
+vestebemuai-poc $ curl -s 'localhost:8080/actuator/metrics/checkout.pedidos.concluidos?tag=modo:fila'; echo
+{"name":"checkout.pedidos.concluidos","measurements":[{"statistic":"COUNT","value":100.0}],"availableTags":[]}
+

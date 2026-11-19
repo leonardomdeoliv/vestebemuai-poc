@@ -2,6 +2,7 @@ package br.com.vestebemuai.monolito.pedido;
 
 import br.com.vestebemuai.monolito.notificacao.EmailConfirmacaoService;
 import br.com.vestebemuai.monolito.notificacao.PedidoCriadoEvento;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,14 +30,17 @@ public class CheckoutService {
     private final EmailConfirmacaoService emailConfirmacao;
     private final ApplicationEventPublisher eventos;
     private final ModoNotificacao modo;
+    private final MeterRegistry metricas;
 
     public CheckoutService(PedidoRepository pedidos, EmailConfirmacaoService emailConfirmacao,
                            ApplicationEventPublisher eventos,
-                           @Value("${vestebemuai.notificacao.modo:fila}") ModoNotificacao modo) {
+                           @Value("${vestebemuai.notificacao.modo:fila}") ModoNotificacao modo,
+                           MeterRegistry metricas) {
         this.pedidos = pedidos;
         this.emailConfirmacao = emailConfirmacao;
         this.eventos = eventos;
         this.modo = modo;
+        this.metricas = metricas;
         log.info("Checkout iniciado com notificacao no modo {}", modo);
     }
 
@@ -56,6 +60,8 @@ public class CheckoutService {
         }
 
         log.info("Pedido {} concluido, total R$ {}", pedido.getId(), pedido.getTotal());
+        // S3.1 (RNF03): pedidos concluidos por modo, em /actuator/metrics/checkout.pedidos.concluidos
+        metricas.counter("checkout.pedidos.concluidos", "modo", modo.name().toLowerCase()).increment();
         return pedido;
     }
 }

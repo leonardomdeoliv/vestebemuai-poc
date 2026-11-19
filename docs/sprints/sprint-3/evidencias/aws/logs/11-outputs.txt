@@ -1,0 +1,10 @@
+enderecos = {
+  "api" = "http://67.202.26.216:8080/actuator/health"
+  "mailpit" = "http://67.202.26.216:8025"
+  "notificacoes" = "http://67.202.26.216:8081/actuator/metrics"
+  "rabbitmq" = "http://67.202.26.216:15672"
+}
+instancia = "i-05b10e4d4869b6cdb"
+ip_liberado = "xxx.xxx.xxx.xxx/32"
+ip_publico = "67.202.26.216"
+ssh = "ssh -i ./vestebemuai-poc.pem ec2-user@67.202.26.216"

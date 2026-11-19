@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal (EC2 na AWS) – entrega após o retorno do e-mail (H2)</div><pre><span class="p">vestebemuai-poc $</span> ./scripts/entrega-h2.sh 100 docs/sprints/sprint-3/evidencias/aws
+&gt;&gt; 1. Aguardando os reenvios (2 s, 4 s, 8 s) levarem os eventos para a DLQ
+   fila principal: 0 prontas, 0 em reenvio | DLQ: 100 mensagens (132 s)
+   metricas: falhas=400 para_dlq=100 enviados=0
+&gt;&gt; 2. Mailpit de volta
+&gt;&gt; 3. Reprocessando a DLQ: {"reprocessadas":100,"destino":"notificacoes.pedido-criado"}
+   e-mails no Mailpit: total=100 pedidos_com_email=100 duplicados=0 em 1.2s | DLQ=0
+   metricas: enviados=100 duplicados_ignorados=0 reprocessadas=100
+&gt;&gt; <span class="ok">OK: H2 validada, 100.0% das confirmacoes entregues e nenhum e-mail duplicado</span></pre></div>
