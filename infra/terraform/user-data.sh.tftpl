@@ -1,0 +1,29 @@
+#!/bin/bash
+# Prepara a EC2 e sobe o mesmo ambiente da maquina local (RNF04).
+set -euxo pipefail
+exec > /var/log/vestebemuai-setup.log 2>&1
+
+dnf install -y docker git python3
+mkdir -p /usr/libexec/docker/cli-plugins
+curl -sSL https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-linux-x86_64 \
+  -o /usr/libexec/docker/cli-plugins/docker-compose
+curl -sSL https://github.com/docker/buildx/releases/download/v0.17.1/buildx-v0.17.1.linux-amd64 \
+  -o /usr/libexec/docker/cli-plugins/docker-buildx
+chmod +x /usr/libexec/docker/cli-plugins/*
+systemctl enable --now docker
+usermod -aG docker ec2-user
+
+cd /home/ec2-user
+git clone --branch "${branch}" "${repositorio}" vestebemuai-poc
+chown -R ec2-user:ec2-user vestebemuai-poc
+cd vestebemuai-poc
+
+inicio=$(date +%s)
+docker compose up -d --build
+for _ in $(seq 1 120); do
+  curl -sf http://localhost:8080/actuator/health && curl -sf http://localhost:8081/actuator/health && break
+  sleep 5
+done
+echo "Ambiente no ar em $(( $(date +%s) - inicio )) s (build das imagens incluso)" > /home/ec2-user/pronto.txt
+docker compose ps >> /home/ec2-user/pronto.txt
+chown ec2-user:ec2-user /home/ec2-user/pronto.txt
