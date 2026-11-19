@@ -1,0 +1,59 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:"DejaVu Sans",Arial,sans-serif}svg text{font-family:"DejaVu Sans",Arial,sans-serif}</style>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>
+<text x="700" y="44" text-anchor="middle" font-size="28" font-weight="bold" fill="#1d2420">C4 – Diagrama de implantação</text>
+<text x="700" y="76" text-anchor="middle" font-size="17" fill="#555">O mesmo docker-compose.yml roda na máquina do autor e na EC2 temporária (RNF04, RNF06, ADR-004)</text>
+<!-- Mac do autor -->
+<rect x="40" y="110" width="400" height="740" rx="12" fill="#f4f6f8" stroke="#888" stroke-width="2"/>
+<text x="60" y="142" font-size="19" font-weight="bold" fill="#333">Máquina do autor</text><text x="60" y="164" font-size="13" fill="#666">[macOS, Docker Desktop, Terraform, AWS CLI]</text>
+<rect x="70" y="190" width="340" height="250" rx="10" fill="#fff" stroke="#999" stroke-dasharray="8 5"/>
+<text x="90" y="218" font-size="15" font-weight="bold" fill="#444">Docker Compose local</text><text x="90" y="238" font-size="12.5" fill="#666">desenvolvimento (Sprints 1 a 3)</text>
+<g font-size="13.5" fill="#fff" text-anchor="middle">
+<rect x="90" y="255" width="145" height="50" rx="8" fill="#438dd5"/><text x="162" y="285">monolito :8080</text>
+<rect x="245" y="255" width="145" height="50" rx="8" fill="#438dd5"/><text x="317" y="279">notificacoes</text><text x="317" y="296">:8081</text>
+<rect x="90" y="315" width="145" height="50" rx="8" fill="#438dd5"/><text x="162" y="345">rabbitmq</text>
+<rect x="245" y="315" width="145" height="50" rx="8" fill="#438dd5"/><text x="317" y="345">postgres</text>
+<rect x="90" y="375" width="300" height="45" rx="8" fill="#999"/><text x="240" y="403">mailpit (SMTP falso) :8025</text></g>
+<rect x="70" y="470" width="340" height="150" rx="10" fill="#fff" stroke="#7b42bc" stroke-width="2"/>
+<text x="90" y="500" font-size="15" font-weight="bold" fill="#7b42bc">Terraform (infra/terraform)</text>
+<text x="90" y="526" font-size="13" fill="#444">terraform apply / destroy</text>
+<text x="90" y="548" font-size="13" fill="#444">credenciais AWS só nesta máquina</text>
+<text x="90" y="570" font-size="13" fill="#444">.tfstate e chave .pem fora do Git</text>
+<text x="90" y="592" font-size="13" fill="#444">IP do autor liberado no security group</text>
+<rect x="70" y="650" width="340" height="170" rx="10" fill="#fff" stroke="#999"/>
+<text x="90" y="680" font-size="15" font-weight="bold" fill="#444">Scripts de validação</text>
+<text x="90" y="706" font-size="13" fill="#444">teste-falha-h1.sh (H1)</text><text x="90" y="728" font-size="13" fill="#444">entrega-h2.sh (H2)</text>
+<text x="90" y="750" font-size="13" fill="#444">deploy-notificacoes.sh (H3)</text><text x="90" y="772" font-size="13" fill="#444">rodam igual no local e na EC2 (via SSH)</text>
+<!-- GitHub -->
+<rect x="560" y="120" width="280" height="110" rx="12" fill="#999"/><text x="700" y="160" text-anchor="middle" fill="#fff" font-size="19" font-weight="bold">GitHub</text>
+<text x="700" y="184" text-anchor="middle" fill="#fff" font-size="13">[repositório vestebemuai-poc]</text><text x="700" y="206" text-anchor="middle" fill="#fff" font-size="13">código, Compose, ADRs, DAS</text>
+<!-- AWS -->
+<rect x="940" y="110" width="420" height="740" rx="12" fill="#fff8ef" stroke="#ff9900" stroke-width="2.5"/>
+<text x="960" y="142" font-size="19" font-weight="bold" fill="#b36b00">AWS – us-east-1</text><text x="960" y="164" font-size="13" fill="#666">[conta do autor; orçamento de US$ 5 no AWS Budgets]</text>
+<rect x="965" y="185" width="370" height="570" rx="10" fill="#fff" stroke="#ff9900" stroke-dasharray="8 5"/>
+<text x="985" y="212" font-size="12.5" font-weight="bold" fill="#b36b00">VPC padrão · security group vestebemuai-poc</text>
+<text x="985" y="232" font-size="12.5" fill="#666">entrada 22, 8080, 8081, 8025, 15672 só do IP do autor</text>
+<rect x="985" y="250" width="330" height="480" rx="10" fill="#f4f6f8" stroke="#888" stroke-width="2"/>
+<text x="1005" y="278" font-size="16" font-weight="bold" fill="#333">EC2 t3.medium</text><text x="1005" y="298" font-size="12.5" fill="#666">[Amazon Linux 2023, 2 vCPU, 4 GiB, gp3 20 GB]</text>
+<text x="1005" y="318" font-size="11.5" fill="#666">user data: Docker, git clone, compose up --build</text>
+<rect x="1005" y="335" width="290" height="370" rx="10" fill="#fff" stroke="#999" stroke-dasharray="8 5"/>
+<text x="1020" y="360" font-size="13" font-weight="bold" fill="#444">Docker Compose (mesmo arquivo)</text>
+<g font-size="13.5" fill="#fff" text-anchor="middle">
+<rect x="1020" y="378" width="125" height="50" rx="8" fill="#438dd5"/><text x="1082" y="408">monolito</text>
+<rect x="1155" y="378" width="125" height="50" rx="8" fill="#438dd5"/><text x="1217" y="408">notificacoes</text>
+<rect x="1020" y="440" width="125" height="50" rx="8" fill="#438dd5"/><text x="1082" y="470">rabbitmq</text>
+<rect x="1155" y="440" width="125" height="50" rx="8" fill="#438dd5"/><text x="1217" y="470">postgres</text>
+<rect x="1020" y="502" width="260" height="45" rx="8" fill="#999"/><text x="1150" y="530">mailpit</text>
+<rect x="1020" y="560" width="260" height="60" rx="8" fill="#2d6a4f"/><text x="1150" y="586">Playwright (temporário)</text><text x="1150" y="606" font-size="12">prints de dentro da instância</text></g>
+<text x="1020" y="650" font-size="12.5" fill="#444">Ciclo de vida: apply 19/11 19:32 →</text><text x="1020" y="670" font-size="12.5" fill="#444">testes H1, H2, H3 → prints → destroy</text><text x="1020" y="690" font-size="12.5" fill="#444">no mesmo dia</text>
+<text x="985" y="790" font-size="13" fill="#666">Sem RDS, Amazon MQ ou balanceador (custo e escopo)</text>
+<!-- setas -->
+<line x1="440" y1="545" x2="960" y2="545" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+<text x="700" y="535" text-anchor="middle" font-size="13.5" fill="#333">API da AWS (HTTPS): cria e destrói</text>
+<line x1="440" y1="735" x2="1000" y2="735" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+<text x="720" y="725" text-anchor="middle" font-size="13.5" fill="#333">SSH (22): roda os scripts e copia resultados</text>
+<line x1="840" y1="200" x2="1000" y2="320" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+<text x="905" y="290" text-anchor="middle" font-size="13" fill="#333" transform="rotate(37 905 290)">git clone (HTTPS)</text>
+<line x1="440" y1="230" x2="560" y2="190" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+<text x="500" y="196" text-anchor="middle" font-size="13" fill="#333">git push</text>
+</svg>
