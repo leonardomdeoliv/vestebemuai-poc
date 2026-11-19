@@ -1,0 +1,309 @@
+data.http.meu_ip: Reading...
+tls_private_key.ssh: Refreshing state... [id=b7d2ec6486dcc2d8027bd7513161eae54d6e1dc9]
+local_sensitive_file.pem: Refreshing state... [id=1c28d6e03c48cf9a7fd183d32900a92563ce4397]
+data.http.meu_ip: Read complete after 1s [id=https://checkip.amazonaws.com]
+data.aws_ssm_parameter.al2023: Reading...
+data.aws_vpc.padrao: Reading...
+aws_key_pair.ssh: Refreshing state... [id=vestebemuai-poc]
+data.aws_ssm_parameter.al2023: Read complete after 0s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64]
+data.aws_vpc.padrao: Read complete after 1s [id=vpc-03a3feac991b615a5]
+aws_security_group.poc: Refreshing state... [id=sg-0e7e20b1827e383f4]
+aws_instance.poc: Refreshing state... [id=i-05b10e4d4869b6cdb]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.poc will be destroyed
+  - resource "aws_instance" "poc" {
+      - ami                                  = (sensitive value) -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:************:instance/i-05b10e4d4869b6cdb" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-1c" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 2 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-05b10e4d4869b6cdb" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.medium" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "vestebemuai-poc" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-00b5e470451513cd2" -> null
+      - private_dns                          = "ip-172-31-28-44.ec2.internal" -> null
+      - private_ip                           = "172.31.28.44" -> null
+      - public_dns                           = "ec2-67-202-26-216.compute-1.amazonaws.com" -> null
+      - public_ip                            = "67.202.26.216" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [
+          - "vestebemuai-poc",
+        ] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-03276b1f3ec1c8c19" -> null
+      - tags                                 = {
+          - "Name" = "vestebemuai-poc"
+        } -> null
+      - tags_all                             = {
+          - "Criado"  = "terraform"
+          - "Dono"    = "leonardomdeoliv"
+          - "Name"    = "vestebemuai-poc"
+          - "Projeto" = "vestebemuai-poc"
+          - "Sprint"  = "3"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = "38d38e4c921ab22800e1e5af1c3bac2abc8364a1" -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0e7e20b1827e383f4",
+        ] -> null
+        # (7 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 2 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "Criado"  = "terraform"
+              - "Dono"    = "leonardomdeoliv"
+              - "Projeto" = "vestebemuai-poc"
+              - "Sprint"  = "3"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-06ffaa88ee2f79321" -> null
+          - volume_size           = 20 -> null
+          - volume_type           = "gp3" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_key_pair.ssh will be destroyed
+  - resource "aws_key_pair" "ssh" {
+      - arn             = "arn:aws:ec2:us-east-1:************:key-pair/vestebemuai-poc" -> null
+      - fingerprint     = "bc0TVxZTu5/uRfo/BWtntfd+gfq3oypPq8HHTKdu1fU=" -> null
+      - id              = "vestebemuai-poc" -> null
+      - key_name        = "vestebemuai-poc" -> null
+      - key_pair_id     = "key-0e374d857b68ffc22" -> null
+      - key_type        = "ed25519" -> null
+      - public_key      = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINtLjeJyhjctDspn+klJdnwllHTMfEB25RVi9pk1qjoc" -> null
+      - tags            = {} -> null
+      - tags_all        = {
+          - "Criado"  = "terraform"
+          - "Dono"    = "leonardomdeoliv"
+          - "Projeto" = "vestebemuai-poc"
+          - "Sprint"  = "3"
+        } -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.poc will be destroyed
+  - resource "aws_security_group" "poc" {
+      - arn                    = "arn:aws:ec2:us-east-1:************:security-group/sg-0e7e20b1827e383f4" -> null
+      - description            = "PoC VesteBemUai: portas da demonstracao so para o IP do autor" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Saida para baixar imagens Docker, dependencias Maven e o repositorio"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0e7e20b1827e383f4" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "xxx.xxx.xxx.xxx/32",
+                ]
+              - description      = "mailpit"
+              - from_port        = 8025
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 8025
+            },
+          - {
+              - cidr_blocks      = [
+                  - "xxx.xxx.xxx.xxx/32",
+                ]
+              - description      = "monolito"
+              - from_port        = 8080
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 8080
+            },
+          - {
+              - cidr_blocks      = [
+                  - "xxx.xxx.xxx.xxx/32",
+                ]
+              - description      = "notificacoes"
+              - from_port        = 8081
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 8081
+            },
+          - {
+              - cidr_blocks      = [
+                  - "xxx.xxx.xxx.xxx/32",
+                ]
+              - description      = "rabbitmq"
+              - from_port        = 15672
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 15672
+            },
+          - {
+              - cidr_blocks      = [
+                  - "xxx.xxx.xxx.xxx/32",
+                ]
+              - description      = "ssh"
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "vestebemuai-poc" -> null
+      - owner_id               = "************" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {
+          - "Criado"  = "terraform"
+          - "Dono"    = "leonardomdeoliv"
+          - "Projeto" = "vestebemuai-poc"
+          - "Sprint"  = "3"
+        } -> null
+      - vpc_id                 = "vpc-03a3feac991b615a5" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # local_sensitive_file.pem will be destroyed
+  - resource "local_sensitive_file" "pem" {
+      - content              = (sensitive value) -> null
+      - content_base64sha256 = "d2G7TWH3RJWNXcieqxA5qW/EuLGlszgj5fodp4xRPKY=" -> null
+      - content_base64sha512 = "rUjJl2NodJPYig/y8byb2dO+znWDwnlxNluwFkuxWC/0citcWMcSFcgIDwaxjQFTMioaeGXVHNt+7g9/Q0YYjg==" -> null
+      - content_md5          = "f978cb4c6138b72e7e61574b857af857" -> null
+      - content_sha1         = "1c28d6e03c48cf9a7fd183d32900a92563ce4397" -> null
+      - content_sha256       = "7761bb4d61f744958d5dc89eab1039a96fc4b8b1a5b33823e5fa1da78c513ca6" -> null
+      - content_sha512       = "ad48c99763687493d88a0ff2f1bc9bd9d3bece7583c27971365bb0164bb1582ff4722b5c58c71215c8080f06b18d0153322a1a7865d51cdb7eee0f7f4346188e" -> null
+      - directory_permission = "0700" -> null
+      - file_permission      = "0600" -> null
+      - filename             = "./vestebemuai-poc.pem" -> null
+      - id                   = "1c28d6e03c48cf9a7fd183d32900a92563ce4397" -> null
+    }
+
+  # tls_private_key.ssh will be destroyed
+  - resource "tls_private_key" "ssh" {
+      - algorithm                     = "ED25519" -> null
+      - ecdsa_curve                   = "P224" -> null
+      - id                            = "b7d2ec6486dcc2d8027bd7513161eae54d6e1dc9" -> null
+      - private_key_openssh           = (sensitive value) -> null
+      - private_key_pem               = (sensitive value) -> null
+      - private_key_pem_pkcs8         = (sensitive value) -> null
+      - public_key_fingerprint_md5    = "02:9e:dc:95:05:c8:9c:1f:c8:53:42:a7:8e:37:94:42" -> null
+      - public_key_fingerprint_sha256 = "SHA256:bc0TVxZTu5/uRfo/BWtntfd+gfq3oypPq8HHTKdu1fU" -> null
+      - public_key_openssh            = <<-EOT
+            ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINtLjeJyhjctDspn+klJdnwllHTMfEB25RVi9pk1qjoc
+        EOT -> null
+      - public_key_pem                = <<-EOT
+            -----BEGIN PUBLIC KEY-----
+            MCowBQYDK2VwAyEA20uN4nKGNy0Oymf6SUl2fCWUdMx8QHblFWL2mTWqOhw=
+            -----END PUBLIC KEY-----
+        EOT -> null
+      - rsa_bits                      = 2048 -> null
+    }
+
+Plan: 0 to add, 0 to change, 5 to destroy.
+
+Changes to Outputs:
+  - enderecos   = {
+      - api          = "http://67.202.26.216:8080/actuator/health"
+      - mailpit      = "http://67.202.26.216:8025"
+      - notificacoes = "http://67.202.26.216:8081/actuator/metrics"
+      - rabbitmq     = "http://67.202.26.216:15672"
+    } -> null
+  - instancia   = "i-05b10e4d4869b6cdb" -> null
+  - ip_liberado = "xxx.xxx.xxx.xxx/32" -> null
+  - ip_publico  = "67.202.26.216" -> null
+  - ssh         = "ssh -i ./vestebemuai-poc.pem ec2-user@67.202.26.216" -> null
+local_sensitive_file.pem: Destroying... [id=1c28d6e03c48cf9a7fd183d32900a92563ce4397]
+local_sensitive_file.pem: Destruction complete after 0s
+aws_instance.poc: Destroying... [id=i-05b10e4d4869b6cdb]
+aws_instance.poc: Still destroying... [id=i-05b10e4d4869b6cdb, 00m10s elapsed]
+aws_instance.poc: Still destroying... [id=i-05b10e4d4869b6cdb, 00m20s elapsed]
+aws_instance.poc: Still destroying... [id=i-05b10e4d4869b6cdb, 00m30s elapsed]
+aws_instance.poc: Destruction complete after 31s
+aws_key_pair.ssh: Destroying... [id=vestebemuai-poc]
+aws_security_group.poc: Destroying... [id=sg-0e7e20b1827e383f4]
+aws_key_pair.ssh: Destruction complete after 1s
+tls_private_key.ssh: Destroying... [id=b7d2ec6486dcc2d8027bd7513161eae54d6e1dc9]
+tls_private_key.ssh: Destruction complete after 0s
+aws_security_group.poc: Destruction complete after 2s
+
+Destroy complete! Resources: 5 destroyed.

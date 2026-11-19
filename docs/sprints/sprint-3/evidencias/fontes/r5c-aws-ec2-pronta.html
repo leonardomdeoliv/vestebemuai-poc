@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – ambiente pronto na EC2 e instância em execução (S3.5)</div><pre>infra/terraform $ ssh ec2-user@67.202.26.216 cat pronto.txt
+Ambiente no ar em 126 s (build das imagens incluso)
+NAME                         IMAGE                      COMMAND                  SERVICE        CREATED          STATU
+vestebemuai-mailpit-1        axllent/mailpit:v1.27      "/mailpit"               mailpit        39 seconds ago   Up 37
+vestebemuai-monolito-1       vestebemuai-monolito       "java -jar app.jar"      monolito       39 seconds ago   Up 26
+vestebemuai-notificacoes-1   vestebemuai-notificacoes   "java -jar app.jar"      notificacoes   39 seconds ago   Up 26
+vestebemuai-postgres-1       postgres:16-alpine         "docker-entrypoint.s…"   postgres       39 seconds ago   Up 
+vestebemuai-rabbitmq-1       rabbitmq:3.13-management   "docker-entrypoint.s…"   rabbitmq       39 seconds ago   Up 
+
+infra/terraform $ aws ec2 describe-instances --filters Name=tag:Projeto,Values=vestebemuai-poc ...
+-----------------------------------------
+|           DescribeInstances           |
++---------+-----------------------------+
+|  AZ     |  us-east-1c                 |
+|  Estado |  running                    |
+|  IP     |  67.202.26.216              |
+|  Id     |  i-05b10e4d4869b6cdb        |
+|  Inicio |  2026-11-19T22:32:45+00:00  |
+|  Tipo   |  t3.medium                  |
++---------+-----------------------------+</pre></div>

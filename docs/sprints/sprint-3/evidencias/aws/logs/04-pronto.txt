@@ -1,0 +1,7 @@
+Ambiente no ar em 126 s (build das imagens incluso)
+NAME                         IMAGE                      COMMAND                  SERVICE        CREATED          STATUS                    PORTS
+vestebemuai-mailpit-1        axllent/mailpit:v1.27      "/mailpit"               mailpit        39 seconds ago   Up 37 seconds (healthy)   0.0.0.0:1025->1025/tcp, :::1025->1025/tcp, 0.0.0.0:8025->8025/tcp, :::8025->8025/tcp, 1110/tcp
+vestebemuai-monolito-1       vestebemuai-monolito       "java -jar app.jar"      monolito       39 seconds ago   Up 26 seconds             0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
+vestebemuai-notificacoes-1   vestebemuai-notificacoes   "java -jar app.jar"      notificacoes   39 seconds ago   Up 26 seconds             0.0.0.0:8081->8081/tcp, :::8081->8081/tcp
+vestebemuai-postgres-1       postgres:16-alpine         "docker-entrypoint.s…"   postgres       39 seconds ago   Up 37 seconds (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+vestebemuai-rabbitmq-1       rabbitmq:3.13-management   "docker-entrypoint.s…"   rabbitmq       39 seconds ago   Up 37 seconds (healthy)   4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, :::5672->5672/tcp, 15671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp, :::15672->15672/tcp

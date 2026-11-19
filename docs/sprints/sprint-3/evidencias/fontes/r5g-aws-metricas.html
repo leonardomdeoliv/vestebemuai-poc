@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal (EC2 na AWS) – métricas no Actuator com o e-mail parado</div><pre><span class="p">vestebemuai-poc $</span> curl -s localhost:8081/actuator/metrics/notificacoes.emails.falhas; echo
+{"name":"notificacoes.emails.falhas","measurements":[{"statistic":"COUNT","value":400.0}],"availableTags":[]}
+
+<span class="p">vestebemuai-poc $</span> curl -s localhost:8081/actuator/metrics/notificacoes.mensagens.dlq; echo
+{"name":"notificacoes.mensagens.dlq","measurements":[{"statistic":"COUNT","value":100.0}],"availableTags":[]}
+
+<span class="p">vestebemuai-poc $</span> curl -s 'localhost:8081/actuator/metrics/notificacoes.fila.mensagens?tag=fila:notificacoes.dlq'; echo
+{"name":"notificacoes.fila.mensagens","description":"Mensagens esperando na fila","measurements":[{"statistic":"VALUE","value":100.0}],"availableTags":[]}
+
+<span class="p">vestebemuai-poc $</span> curl -s 'localhost:8080/actuator/metrics/checkout.pedidos.concluidos?tag=modo:fila'; echo
+{"name":"checkout.pedidos.concluidos","measurements":[{"statistic":"COUNT","value":100.0}],"availableTags":[]}</pre></div>

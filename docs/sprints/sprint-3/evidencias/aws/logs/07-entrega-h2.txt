@@ -1,0 +1,10 @@
+vestebemuai-poc $ ./scripts/entrega-h2.sh 100 docs/sprints/sprint-3/evidencias/aws
+>> 1. Aguardando os reenvios (2 s, 4 s, 8 s) levarem os eventos para a DLQ
+   fila principal: 0 prontas, 0 em reenvio | DLQ: 100 mensagens (132 s)
+   metricas: falhas=400 para_dlq=100 enviados=0
+>> 2. Mailpit de volta
+>> 3. Reprocessando a DLQ: {"reprocessadas":100,"destino":"notificacoes.pedido-criado"}
+   e-mails no Mailpit: total=100 pedidos_com_email=100 duplicados=0 em 1.2s | DLQ=0
+   metricas: enviados=100 duplicados_ignorados=0 reprocessadas=100
+>> OK: H2 validada, 100.0% das confirmacoes entregues e nenhum e-mail duplicado
+

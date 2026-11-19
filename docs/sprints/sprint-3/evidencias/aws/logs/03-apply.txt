@@ -1,0 +1,26 @@
+tls_private_key.ssh: Creating...
+tls_private_key.ssh: Creation complete after 0s [id=b7d2ec6486dcc2d8027bd7513161eae54d6e1dc9]
+local_sensitive_file.pem: Creating...
+local_sensitive_file.pem: Creation complete after 0s [id=1c28d6e03c48cf9a7fd183d32900a92563ce4397]
+aws_key_pair.ssh: Creating...
+aws_security_group.poc: Creating...
+aws_key_pair.ssh: Creation complete after 1s [id=vestebemuai-poc]
+aws_security_group.poc: Creation complete after 4s [id=sg-0e7e20b1827e383f4]
+aws_instance.poc: Creating...
+aws_instance.poc: Still creating... [00m10s elapsed]
+aws_instance.poc: Creation complete after 15s [id=i-05b10e4d4869b6cdb]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+enderecos = {
+  "api" = "http://67.202.26.216:8080/actuator/health"
+  "mailpit" = "http://67.202.26.216:8025"
+  "notificacoes" = "http://67.202.26.216:8081/actuator/metrics"
+  "rabbitmq" = "http://67.202.26.216:15672"
+}
+instancia = "i-05b10e4d4869b6cdb"
+ip_liberado = "xxx.xxx.xxx.xxx/32"
+ip_publico = "67.202.26.216"
+ssh = "ssh -i ./vestebemuai-poc.pem ec2-user@67.202.26.216"

@@ -1,0 +1,11 @@
+ec2-user@vestebemuai-poc $ docker compose ps
+NAME                         IMAGE                      COMMAND                  SERVICE        CREATED              STATUS                        PORTS
+vestebemuai-mailpit-1        axllent/mailpit:v1.27      "/mailpit"               mailpit        About a minute ago   Up About a minute (healthy)   0.0.0.0:1025->1025/tcp, :::1025->1025/tcp, 0.0.0.0:8025->8025/tcp, :::8025->8025/tcp, 1110/tcp
+vestebemuai-monolito-1       vestebemuai-monolito       "java -jar app.jar"      monolito       About a minute ago   Up 53 seconds                 0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
+vestebemuai-notificacoes-1   vestebemuai-notificacoes   "java -jar app.jar"      notificacoes   About a minute ago   Up 53 seconds                 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp
+vestebemuai-postgres-1       postgres:16-alpine         "docker-entrypoint.s…"   postgres       About a minute ago   Up About a minute (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+vestebemuai-rabbitmq-1       rabbitmq:3.13-management   "docker-entrypoint.s…"   rabbitmq       About a minute ago   Up About a minute (healthy)   4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, :::5672->5672/tcp, 15671/tcp, 15691-15692/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp, :::15672->15672/tcp
+
+ec2-user@vestebemuai-poc $ curl -s localhost:8081/actuator/health; echo
+{"status":"UP","components":{"db":{"status":"UP","details":{"database":"PostgreSQL","validationQuery":"isValid()"}},"diskSpace":{"status":"UP","details":{"total":21395124224,"free":17049882624,"threshold":10485760,"path":"/app/.","exists":true}},"mail":{"status":"UP","details":{"location":"mailpit:1025"}},"ping":{"status":"UP"},"rabbit":{"status":"UP","details":{"version":"3.13.7"}},"ssl":{"status":"UP","details":{"validChains":[],"invalidChains":[]}}}}
+
