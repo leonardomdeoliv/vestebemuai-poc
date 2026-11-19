@@ -9,7 +9,10 @@
 
 Quadro Kanban no [GitHub Projects](https://github.com/users/leonardomdeoliv/projects/1), com uma issue por task
 ([issues da Sprint 3](https://github.com/leonardomdeoliv/vestebemuai-poc/issues?q=label%3Asprint-3)) e o
-critério de conclusão escrito na issue antes da execução. Print: [p-quadro-github-projects.png](evidencias/p-quadro-github-projects.png).
+critério de conclusão escrito na issue antes da execução, todas na milestone
+[Sprint 3](https://github.com/leonardomdeoliv/vestebemuai-poc/milestone/3). Prints: quadro no início
+([p-quadro-github-projects.png](evidencias/p-quadro-github-projects.png)) e ao final, com S3.1 a S3.6 em Done
+([p-quadro-done.png](evidencias/p-quadro-done.png)).
 
 | Task | Item | Requisito | Critério de conclusão | Estimativa | Dias planejados |
 |---|---|---|---|---|---|
