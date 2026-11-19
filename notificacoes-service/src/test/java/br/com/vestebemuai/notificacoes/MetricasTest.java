@@ -99,4 +99,11 @@ class MetricasTest {
         assertThat(registro.find(MetricasFilas.METRICA).tag("fila", "notificacoes.pedido-criado").gauge()).isNotNull();
         assertThat(registro.find(MetricasFilas.METRICA).tag("fila", "notificacoes.dlq").gauge()).isNotNull();
     }
+
+    @Test
+    @DisplayName("RNF03: contadores existem desde a subida, mesmo sem nenhum evento")
+    void contadoresRegistradosNaSubida() {
+        assertThat(registro.find("notificacoes.eventos.duplicados").counter()).isNotNull();
+        assertThat(registro.find("notificacoes.dlq.reprocessadas").counter()).isNotNull();
+    }
 }

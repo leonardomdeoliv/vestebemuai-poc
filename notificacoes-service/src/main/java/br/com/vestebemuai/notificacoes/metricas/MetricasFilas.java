@@ -25,8 +25,15 @@ public class MetricasFilas {
 
     private final AmqpAdmin admin;
 
+    /** Contadores registrados ja na subida, para aparecerem com 0 no Actuator antes do primeiro evento. */
+    static final String[] CONTADORES = {"notificacoes.emails.enviados", "notificacoes.emails.falhas",
+            "notificacoes.mensagens.dlq", "notificacoes.dlq.reprocessadas", "notificacoes.eventos.duplicados"};
+
     public MetricasFilas(AmqpAdmin admin, MeterRegistry registro) {
         this.admin = admin;
+        for (String contador : CONTADORES) {
+            registro.counter(contador);
+        }
         for (String fila : new String[]{RabbitConfig.FILA, RabbitConfig.DLQ}) {
             Gauge.builder(METRICA, () -> mensagens(fila))
                     .tag("fila", fila)
