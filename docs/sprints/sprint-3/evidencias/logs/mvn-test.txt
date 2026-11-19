@@ -1,0 +1,277 @@
+vestebemuai-poc $ (cd monolito && mvn test) ; (cd notificacoes-service && mvn test)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< br.com.vestebemuai:monolito >---------------------
+[INFO] Building monolito 0.2.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ monolito ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ monolito ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ monolito ---
+[INFO] skip non existing resourceDirectory /home/user/vestebemuai-poc/monolito/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ monolito ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ monolito ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.com.vestebemuai.monolito.CheckoutSincronoTest
+22:51:46.519 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [br.com.vestebemuai.monolito.CheckoutSincronoTest]: CheckoutSincronoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:51:46.685 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration br.com.vestebemuai.monolito.MonolitoApplication for test class br.com.vestebemuai.monolito.CheckoutSincronoTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-19T22:51:47.429Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.CheckoutSincronoTest      : Starting CheckoutSincronoTest using Java 21.0.13.0.3 with PID 31828 (started by root in /home/user/vestebemuai-poc/monolito)
+2026-11-19T22:51:47.432Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.CheckoutSincronoTest      : The following 1 profile is active: "h2"
+2026-11-19T22:51:48.738Z  INFO 31828 --- [monolito] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-19T22:51:48.803Z  INFO 31828 --- [monolito] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interface.
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-19T22:51:50.516Z  INFO 31828 --- [monolito] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-19T22:51:50.575Z  INFO 31828 --- [monolito] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-11-19T22:51:50.621Z  INFO 31828 --- [monolito] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-19T22:51:50.747Z  INFO 31828 --- [monolito] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-19T22:51:50.778Z  INFO 31828 --- [monolito] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-19T22:51:50.966Z  INFO 31828 --- [monolito] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:vestebemuai user=SA
+2026-11-19T22:51:50.968Z  INFO 31828 --- [monolito] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-19T22:51:51.024Z  INFO 31828 --- [monolito] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-19T22:51:51.742Z  INFO 31828 --- [monolito] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-19T22:51:51.815Z  INFO 31828 --- [monolito] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-19T22:51:52.066Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.pedido.CheckoutService    : Checkout iniciado com notificacao no modo SINCRONO
+2026-11-19T22:51:52.998Z  INFO 31828 --- [monolito] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:vestebemuai'
+2026-11-19T22:51:53.039Z  INFO 31828 --- [monolito] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-19T22:51:53.040Z  INFO 31828 --- [monolito] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-19T22:51:53.050Z  INFO 31828 --- [monolito] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-11-19T22:51:53.063Z  INFO 31828 --- [monolito] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 21 ms
+2026-11-19T22:51:53.132Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.CheckoutSincronoTest      : Started CheckoutSincronoTest in 6.243 seconds (process running for 7.431)
+2026-11-19T22:51:53.668Z  WARN 31828 --- [monolito] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<br.com.vestebemuai.monolito.pedido.PedidoResponse> br.com.vestebemuai.monolito.pedido.PedidoController.criar(br.com.vestebemuai.monolito.pedido.NovoPedidoRequest) with 2 errors: [Field error in object 'novoPedidoRequest' on field 'clienteEmail': rejected value [invalido]; codes [Email.novoPedidoRequest.clienteEmail,Email.clienteEmail,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [novoPedidoRequest.clienteEmail,clienteEmail]; arguments []; default message [clienteEmail],[Ljakarta.validation.constraints.Pattern$Flag;@21d131e7,.*]; default message [must be a well-formed email address]] [Field error in object 'novoPedidoRequest' on field 'itens': rejected value [[]]; codes [NotEmpty.novoPedidoRequest.itens,NotEmpty.itens,NotEmpty.java.util.List,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [novoPedidoRequest.itens,itens]; arguments []; default message [itens]]; default message [must not be empty]] ]
+2026-11-19T22:51:54.110Z ERROR 31828 --- [monolito] [           main] b.c.v.monolito.config.TratadorDeErros    : Checkout falhou porque o e-mail nao foi enviado: Connection refused
+2026-11-19T22:51:54.200Z  INFO 31828 --- [monolito] [           main] b.c.v.m.n.EmailConfirmacaoService        : E-mail de confirmacao do pedido a23f05eb-2062-4294-9ba3-33ca5be4bd0c enviado para maria@exemplo.com
+2026-11-19T22:51:54.200Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.pedido.CheckoutService    : Pedido a23f05eb-2062-4294-9ba3-33ca5be4bd0c concluido, total R$ 159.70
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.914 s -- in br.com.vestebemuai.monolito.CheckoutSincronoTest
+[INFO] Running br.com.vestebemuai.monolito.CheckoutFilaTest
+2026-11-19T22:51:54.255Z  INFO 31828 --- [monolito] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.vestebemuai.monolito.CheckoutFilaTest]: CheckoutFilaTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-19T22:51:54.259Z  INFO 31828 --- [monolito] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.vestebemuai.monolito.MonolitoApplication for test class br.com.vestebemuai.monolito.CheckoutFilaTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-19T22:51:54.311Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.CheckoutFilaTest          : Starting CheckoutFilaTest using Java 21.0.13.0.3 with PID 31828 (started by root in /home/user/vestebemuai-poc/monolito)
+2026-11-19T22:51:54.312Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.CheckoutFilaTest          : The following 1 profile is active: "h2"
+2026-11-19T22:51:54.738Z  INFO 31828 --- [monolito] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-19T22:51:54.746Z  INFO 31828 --- [monolito] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 1 JPA repository interface.
+2026-11-19T22:51:54.882Z  INFO 31828 --- [monolito] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-19T22:51:54.885Z  INFO 31828 --- [monolito] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-19T22:51:54.893Z  INFO 31828 --- [monolito] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-19T22:51:54.894Z  INFO 31828 --- [monolito] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-19T22:51:54.896Z  INFO 31828 --- [monolito] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:vestebemuai user=SA
+2026-11-19T22:51:54.896Z  INFO 31828 --- [monolito] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-19T22:51:54.897Z  INFO 31828 --- [monolito] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-19T22:51:54.938Z  INFO 31828 --- [monolito] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-19T22:51:54.951Z  INFO 31828 --- [monolito] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-19T22:51:55.011Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.pedido.CheckoutService    : Checkout iniciado com notificacao no modo FILA
+2026-11-19T22:51:55.302Z  INFO 31828 --- [monolito] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:vestebemuai'
+2026-11-19T22:51:55.310Z  INFO 31828 --- [monolito] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-19T22:51:55.310Z  INFO 31828 --- [monolito] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-19T22:51:55.313Z  INFO 31828 --- [monolito] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-11-19T22:51:55.319Z  INFO 31828 --- [monolito] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 8 ms
+2026-11-19T22:51:55.337Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.CheckoutFilaTest          : Started CheckoutFilaTest in 1.068 seconds (process running for 9.636)
+2026-11-19T22:51:55.400Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.pedido.CheckoutService    : Pedido 7651b103-ee95-434e-bc6c-38a580837217 concluido, total R$ 159.70
+2026-11-19T22:51:55.404Z ERROR 31828 --- [monolito] [           main] b.c.v.m.n.PublicadorPedidoCriado         : Pedido 7651b103-ee95-434e-bc6c-38a580837217 gravado, mas o evento PedidoCriado nao foi publicado: java.net.ConnectException: Connection refused
+2026-11-19T22:51:55.447Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.pedido.CheckoutService    : Pedido 959a9ef6-87a2-4fad-a321-6a1861df18cb concluido, total R$ 159.70
+2026-11-19T22:51:55.449Z  INFO 31828 --- [monolito] [           main] b.c.v.m.n.PublicadorPedidoCriado         : Evento PedidoCriado 3bd2d753-083b-49a4-bd83-d14819641672 publicado para o pedido 959a9ef6-87a2-4fad-a321-6a1861df18cb
+2026-11-19T22:51:55.488Z  INFO 31828 --- [monolito] [           main] b.c.v.monolito.pedido.CheckoutService    : Pedido b57d4d71-8f47-4319-8f61-b7ae8db3b35e concluido, total R$ 159.70
+2026-11-19T22:51:55.490Z  INFO 31828 --- [monolito] [           main] b.c.v.m.n.PublicadorPedidoCriado         : Evento PedidoCriado 21efadf4-b3c5-4f61-a6c1-e41a05291d17 publicado para o pedido b57d4d71-8f47-4319-8f61-b7ae8db3b35e
+2026-11-19T22:51:55.512Z  WARN 31828 --- [monolito] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<br.com.vestebemuai.monolito.pedido.PedidoResponse> br.com.vestebemuai.monolito.pedido.PedidoController.criar(br.com.vestebemuai.monolito.pedido.NovoPedidoRequest) with 2 errors: [Field error in object 'novoPedidoRequest' on field 'clienteEmail': rejected value [invalido]; codes [Email.novoPedidoRequest.clienteEmail,Email.clienteEmail,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [novoPedidoRequest.clienteEmail,clienteEmail]; arguments []; default message [clienteEmail],[Ljakarta.validation.constraints.Pattern$Flag;@21d131e7,.*]; default message [must be a well-formed email address]] [Field error in object 'novoPedidoRequest' on field 'itens': rejected value [[]]; codes [NotEmpty.novoPedidoRequest.itens,NotEmpty.itens,NotEmpty.java.util.List,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [novoPedidoRequest.itens,itens]; arguments []; default message [itens]]; default message [must not be empty]] ]
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.266 s -- in br.com.vestebemuai.monolito.CheckoutFilaTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.313 s
+[INFO] Finished at: 2026-11-19T22:51:55Z
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< br.com.vestebemuai:notificacoes-service >---------------
+[INFO] Building notificacoes-service 0.1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ notificacoes-service ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ notificacoes-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ notificacoes-service ---
+[INFO] skip non existing resourceDirectory /home/user/vestebemuai-poc/notificacoes-service/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ notificacoes-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ notificacoes-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+22:51:59.733 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [br.com.vestebemuai.notificacoes.NotificacaoPedidoTest]: NotificacaoPedidoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:51:59.904 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration br.com.vestebemuai.notificacoes.NotificacoesApplication for test class br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-19T22:52:00.551Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.NotificacaoPedidoTest            : Starting NotificacaoPedidoTest using Java 21.0.13.0.3 with PID 32129 (started by root in /home/user/vestebemuai-poc/notificacoes-service)
+2026-11-19T22:52:00.552Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.NotificacaoPedidoTest            : The following 1 profile is active: "h2"
+2026-11-19T22:52:01.646Z  INFO 32129 --- [notificacoes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-19T22:52:01.708Z  INFO 32129 --- [notificacoes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interface.
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-11-19T22:52:03.350Z  INFO 32129 --- [notificacoes-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-19T22:52:03.410Z  INFO 32129 --- [notificacoes-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-11-19T22:52:03.453Z  INFO 32129 --- [notificacoes-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-19T22:52:03.610Z  INFO 32129 --- [notificacoes-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-19T22:52:03.637Z  INFO 32129 --- [notificacoes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-19T22:52:03.809Z  INFO 32129 --- [notificacoes-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:notificacoes user=SA
+2026-11-19T22:52:03.812Z  INFO 32129 --- [notificacoes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-19T22:52:03.896Z  INFO 32129 --- [notificacoes-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-19T22:52:04.558Z  INFO 32129 --- [notificacoes-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-19T22:52:04.628Z  INFO 32129 --- [notificacoes-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-19T22:52:05.912Z  INFO 32129 --- [notificacoes-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-11-19T22:52:05.999Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.NotificacaoPedidoTest            : Started NotificacaoPedidoTest in 5.866 seconds (process running for 7.071)
+2026-11-19T22:52:06.308Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento 68eab1e5-11e1-4f9d-bc70-4e557ebcdc82 pedido 808b7104-d14a-411c-b8f4-29fe8cddd70d (tentativa 1 de 4)
+2026-11-19T22:52:06.607Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : E-mail de confirmacao do pedido 808b7104-d14a-411c-b8f4-29fe8cddd70d enviado para maria@exemplo.com (evento 68eab1e5-11e1-4f9d-bc70-4e557ebcdc82)
+2026-11-19T22:52:06.693Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento 8eaaaaa0-8ca0-42e5-8d4e-1f4e7580586e pedido f3a74918-f15f-4e7f-be3f-1eb502bdf838 (tentativa 1 de 4)
+2026-11-19T22:52:06.700Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : E-mail de confirmacao do pedido f3a74918-f15f-4e7f-be3f-1eb502bdf838 enviado para maria@exemplo.com (evento 8eaaaaa0-8ca0-42e5-8d4e-1f4e7580586e)
+2026-11-19T22:52:06.701Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento 8eaaaaa0-8ca0-42e5-8d4e-1f4e7580586e pedido f3a74918-f15f-4e7f-be3f-1eb502bdf838 (tentativa 1 de 4)
+2026-11-19T22:52:06.703Z  WARN 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : Evento 8eaaaaa0-8ca0-42e5-8d4e-1f4e7580586e do pedido f3a74918-f15f-4e7f-be3f-1eb502bdf838 ja processado: mensagem duplicada ignorada, nenhum e-mail enviado
+2026-11-19T22:52:06.722Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento c3dea597-3024-421f-a508-ab4a9f5b7cf4 pedido ebd1926a-73f5-448b-aedb-6fcb57d4bfea (tentativa 1 de 4)
+2026-11-19T22:52:06.730Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : E-mail de confirmacao do pedido ebd1926a-73f5-448b-aedb-6fcb57d4bfea enviado para maria@exemplo.com (evento c3dea597-3024-421f-a508-ab4a9f5b7cf4)
+2026-11-19T22:52:06.730Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento d26d192f-2817-426e-ae52-27c5901fd613 pedido 620f8ffd-db0b-4aa0-829a-28f02d295def (tentativa 1 de 4)
+2026-11-19T22:52:06.737Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : E-mail de confirmacao do pedido 620f8ffd-db0b-4aa0-829a-28f02d295def enviado para maria@exemplo.com (evento d26d192f-2817-426e-ae52-27c5901fd613)
+2026-11-19T22:52:06.754Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento be7f88cb-f350-4ae9-942e-5a68ac6bca86 pedido 54ca74de-9a2f-457e-a4f2-d7d2dc3407d7 (tentativa 1 de 4)
+2026-11-19T22:52:06.763Z  WARN 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : Tentativa 1 de 4 falhou para o pedido 54ca74de-9a2f-457e-a4f2-d7d2dc3407d7: org.springframework.mail.MailSendException: Connection refused. Nova tentativa em breve.
+2026-11-19T22:52:06.776Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : E-mail de confirmacao do pedido 54ca74de-9a2f-457e-a4f2-d7d2dc3407d7 enviado para maria@exemplo.com (evento be7f88cb-f350-4ae9-942e-5a68ac6bca86)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.221 s -- in br.com.vestebemuai.notificacoes.NotificacaoPedidoTest
+[INFO] Running br.com.vestebemuai.notificacoes.MetricasTest
+2026-11-19T22:52:06.788Z  INFO 32129 --- [notificacoes-service] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.vestebemuai.notificacoes.MetricasTest]: MetricasTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-19T22:52:06.790Z  INFO 32129 --- [notificacoes-service] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.vestebemuai.notificacoes.NotificacoesApplication for test class br.com.vestebemuai.notificacoes.MetricasTest
+2026-11-19T22:52:06.803Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento d68f834f-2e46-455c-8cab-e4839136360b pedido e83add3f-d80c-4381-8077-a94c4e9fc811 (tentativa 1 de 4)
+2026-11-19T22:52:06.813Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : E-mail de confirmacao do pedido e83add3f-d80c-4381-8077-a94c4e9fc811 enviado para joana@exemplo.com (evento d68f834f-2e46-455c-8cab-e4839136360b)
+2026-11-19T22:52:06.814Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento d68f834f-2e46-455c-8cab-e4839136360b pedido e83add3f-d80c-4381-8077-a94c4e9fc811 (tentativa 1 de 4)
+2026-11-19T22:52:06.816Z  WARN 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.NotificacaoPedidoService  : Evento d68f834f-2e46-455c-8cab-e4839136360b do pedido e83add3f-d80c-4381-8077-a94c4e9fc811 ja processado: mensagem duplicada ignorada, nenhum e-mail enviado
+2026-11-19T22:52:06.869Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : PedidoCriado recebido: evento f94979f2-d389-4fce-b5fd-cd106e8e6ebb pedido 990f891b-f352-4efe-9c33-86d5004f83a1 (tentativa 1 de 4)
+2026-11-19T22:52:06.888Z  WARN 32129 --- [notificacoes-service] [           main] b.c.v.n.evento.PedidoCriadoListener      : Tentativa 1 de 4 falhou para o pedido 990f891b-f352-4efe-9c33-86d5004f83a1: org.springframework.mail.MailSendException: Connection refused. Nova tentativa em breve.
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.130 s -- in br.com.vestebemuai.notificacoes.MetricasTest
+[INFO] Running br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+2026-11-19T22:52:06.933Z  INFO 32129 --- [notificacoes-service] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.vestebemuai.notificacoes.TopologiaRabbitTest]: TopologiaRabbitTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-19T22:52:06.935Z  INFO 32129 --- [notificacoes-service] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.vestebemuai.notificacoes.NotificacoesApplication for test class br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-19T22:52:06.984Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.notificacoes.TopologiaRabbitTest   : Starting TopologiaRabbitTest using Java 21.0.13.0.3 with PID 32129 (started by root in /home/user/vestebemuai-poc/notificacoes-service)
+2026-11-19T22:52:06.984Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.notificacoes.TopologiaRabbitTest   : The following 1 profile is active: "h2"
+2026-11-19T22:52:07.300Z  INFO 32129 --- [notificacoes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-19T22:52:07.308Z  INFO 32129 --- [notificacoes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 1 JPA repository interface.
+2026-11-19T22:52:07.408Z  INFO 32129 --- [notificacoes-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-19T22:52:07.409Z  INFO 32129 --- [notificacoes-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-19T22:52:07.417Z  INFO 32129 --- [notificacoes-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-19T22:52:07.418Z  INFO 32129 --- [notificacoes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-19T22:52:07.421Z  INFO 32129 --- [notificacoes-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:notificacoes user=SA
+2026-11-19T22:52:07.422Z  INFO 32129 --- [notificacoes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-19T22:52:07.423Z  INFO 32129 --- [notificacoes-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-19T22:52:07.442Z  INFO 32129 --- [notificacoes-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-19T22:52:07.447Z  INFO 32129 --- [notificacoes-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-19T22:52:07.812Z  INFO 32129 --- [notificacoes-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-11-19T22:52:07.838Z  INFO 32129 --- [notificacoes-service] [           main] b.c.v.notificacoes.TopologiaRabbitTest   : Started TopologiaRabbitTest in 0.891 seconds (process running for 8.91)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.950 s -- in br.com.vestebemuai.notificacoes.TopologiaRabbitTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.690 s
+[INFO] Finished at: 2026-11-19T22:52:07Z
+[INFO] ------------------------------------------------------------------------

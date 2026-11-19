@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><style>body{margin:0;background:#fff;padding:16px;font-family:"DejaVu Sans Mono",monospace}
+.w{background:#1e1e1e;border-radius:10px;overflow:hidden;width:1180px;box-shadow:0 2px 8px #0003}.t{background:#3a3a3a;color:#ddd;font:14px "DejaVu Sans",sans-serif;padding:8px 14px}
+.t i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;background:#ff5f56}.t i+i{background:#ffbd2e}.t i+i+i{background:#27c93f;margin-right:14px}
+pre{margin:0;padding:14px 18px;color:#e6e6e6;font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-all}.p{color:#7ec699}.ok{color:#7ee787;font-weight:bold}.er{color:#ff7b72;font-weight:bold}.wa{color:#e3b341}</style>
+<div class="w"><div class="t"><i></i><i></i><i></i>Terminal – deploy só do serviço de notificações (S3.4, H3)</div><pre><span class="p">vestebemuai-poc $</span> ./scripts/deploy-notificacoes.sh
+&gt;&gt; 1. Mudanca no modelo do e-mail (so no servico de notificacoes)
+   9:&lt;p class="aviso"&gt;Trocas grátis em até 30 dias pelo site.&lt;/p&gt;
+&gt;&gt; 2. Pedidos chegando ao monolitico durante o deploy (1 a cada 0,5 s)
+&gt;&gt; 3. docker compose up -d --build --no-deps notificacoes
+   build da imagem: 6.4 s | troca do conteiner ate o health UP: 8.3 s | total: 14.7 s
+&gt;&gt; 4. Monolitico durante o deploy: 38 de 38 pedidos com <span class="ok">HTTP 201</span>
+   monolitico nao reiniciou (no ar desde 2026-11-19T22:30:23.736871969Z)
+&gt;&gt; 5. E-mails dos pedidos feitos durante o deploy: 38 de 38 entregues, 0 duplicados; ultimo com o aviso novo: sim
+&gt;&gt; <span class="ok">OK: H3 validada, servico publicado sozinho em 14.7 s sem parar o checkout</span></pre></div>

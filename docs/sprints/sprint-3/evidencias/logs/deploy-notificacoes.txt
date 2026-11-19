@@ -1,0 +1,10 @@
+vestebemuai-poc $ ./scripts/deploy-notificacoes.sh
+>> 1. Mudanca no modelo do e-mail (so no servico de notificacoes)
+   9:<p class="aviso">Trocas grátis em até 30 dias pelo site.</p>
+>> 2. Pedidos chegando ao monolitico durante o deploy (1 a cada 0,5 s)
+>> 3. docker compose up -d --build --no-deps notificacoes
+   build da imagem: 6.4 s | troca do conteiner ate o health UP: 8.3 s | total: 14.7 s
+>> 4. Monolitico durante o deploy: 38 de 38 pedidos com HTTP 201
+   monolitico nao reiniciou (no ar desde 2026-11-19T22:30:23.736871969Z)
+>> 5. E-mails dos pedidos feitos durante o deploy: 38 de 38 entregues, 0 duplicados; ultimo com o aviso novo: sim
+>> OK: H3 validada, servico publicado sozinho em 14.7 s sem parar o checkout
